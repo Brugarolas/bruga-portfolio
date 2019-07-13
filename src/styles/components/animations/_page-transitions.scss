@@ -1,0 +1,84 @@
+/* Thantks to https://tympanus.net/codrops/2013/05/07/a-collection-of-page-transitions/ */
+
+.page-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1200px;
+  overflow: hidden;
+  background-color: #333;
+
+  .page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    transform-style: preserve-3d;
+
+    &.page--current {
+      visibility: visible;
+      z-index: 1;
+    }
+
+    &.page--ontop {
+      z-index: 999;
+    }
+
+    &.page--moveToTop {
+      -webkit-animation: moveToTop .7s ease-in-out both;
+      animation: moveToTop .7s ease-in-out both;
+    }
+
+    &.page--moveFromTop {
+      -webkit-animation: moveFromTop .7s ease-in-out both;
+      animation: moveFromTop .7s ease-in-out both;
+    }
+
+    &.page--moveToBottom {
+      -webkit-animation: moveToBottom .7s ease-in-out both;
+      animation: moveToBottom .7s ease-in-out both;
+    }
+
+    &.page--moveFromBottom {
+      -webkit-animation: moveFromBottom .7s ease-in-out both;
+      animation: moveFromBottom .7s ease-in-out both;
+    }
+  }
+}
+
+@-webkit-keyframes moveToTop {
+	from { }
+	to { -webkit-transform: translateY(-100%); }
+}
+@keyframes moveToTop {
+	from { }
+	to { -webkit-transform: translateY(-100%); transform: translateY(-100%); }
+}
+
+@-webkit-keyframes moveFromTop {
+	from { -webkit-transform: translateY(-100%); }
+}
+@keyframes moveFromTop {
+	from { -webkit-transform: translateY(-100%); transform: translateY(-100%); }
+}
+
+@-webkit-keyframes moveToBottom {
+	from { }
+	to { -webkit-transform: translateY(100%); }
+}
+@keyframes moveToBottom {
+	from { }
+	to { -webkit-transform: translateY(100%); transform: translateY(100%); }
+}
+
+@-webkit-keyframes moveFromBottom {
+	from { -webkit-transform: translateY(100%); }
+}
+@keyframes moveFromBottom {
+	from { -webkit-transform: translateY(100%); transform: translateY(100%); }
+}

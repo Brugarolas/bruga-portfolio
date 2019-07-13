@@ -1,14 +1,15 @@
-import raf from 'raf';
+import requestAnimationFrame from './raf.js'
 import imageBackground from './components/image-background.js';
 import typewriter from './components/typewriter.js';
-
-const requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame|| window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || raf;
+import pageTransitions from './components/page-transitions.js';
 
 const initComponents = () => {
   requestAnimationFrame(() => {
     imageBackground();
     typewriter();
   });
+
+  pageTransitions();
 };
 
 export default initComponents;
