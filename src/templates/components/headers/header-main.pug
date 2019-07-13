@@ -1,9 +1,18 @@
-mixin header-main(backgroundPicture, personalPhoto)
+mixin header-main(backgroundPicture, name, links)
   header.header-main
     div.header-main__background
       +image-background(backgroundPicture, 'header-main__background-image')
-    
+
+    div.header-main__top
+      div.header-main__top__name= name
+      div.header-main__top__icons
+        a.header-main__top__icon.fab.fa-linkedin.linkedin(href=links.linkedin target='_blank')
+        a.header-main__top__icon.fab.fa-github.github(href=links.github target='_blank')
+
     div.header-main__content-wrapper
       div.header-main__content
         +typewriter({id: 'title', text: 'Front-end Developer', loop: 'false'}, 'title')
         +typewriter({text: ['Passion for programming <i class="heart fas fa-heart"></i>', 'Exceptional User Experience', 'Responsive & Pixel-perfect layouts', 'Advanced problem-solving skills'], loop: 'true', waitFor: 'title'}, 'subtitle')
+
+    div.header-main__bottom
+      i.header-main__bottom__icon.fas.fa-chevron-down

@@ -1,0 +1,13 @@
+.aboutme {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: #191a28;
+  padding: 40px 60px;
+
+  .aboutme__header {
+    color: #fff;
+    @include roboto-slab('regular', 48px);
+    text-align: center;
+  }
+}
