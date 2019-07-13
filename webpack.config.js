@@ -84,9 +84,6 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'styles/bundle.css?[hash]'
-    }),
-    new ProvidePlugin({
-      $: 'jquery/dist/jquery.slim'
     })
   ],
   resolve: {

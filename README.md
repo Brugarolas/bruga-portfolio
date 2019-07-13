@@ -1,8 +1,6 @@
-# bruga-music
+# bruga-portfolio
 
-> Music app made with Vue, Vuex and Vue Router
-
-> [Try it here!](https://brugarolas.github.io/bruga-music/)
+> Personal portfolio made with Pug and Sass
 
 ## Build Setup
 
