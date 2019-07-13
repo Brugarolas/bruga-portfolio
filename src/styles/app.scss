@@ -1,0 +1,13 @@
+@import 'colors';
+@import 'breakpoints';
+@import 'fonts';
+@import 'icons';
+@import 'mixins';
+@import 'components';
+
+:root, html, body {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  @include open-sans('regular', 16px);
+}

@@ -1,0 +1,9 @@
+$fa-font-path: '../../node_modules/@fortawesome/fontawesome-free/webfonts';
+
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
+
+.heart {
+  color: #e63434; //#d90000;
+  font-size: 26px;
+}

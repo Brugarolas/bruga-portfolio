@@ -1,0 +1,9 @@
+mixin header-main(backgroundPicture, personalPhoto)
+  header.header-main
+    div.header-main__background
+      +image-background(backgroundPicture, 'header-main__background-image')
+    
+    div.header-main__content-wrapper
+      div.header-main__content
+        +typewriter({id: 'title', text: 'Front-end Developer', loop: 'false'}, 'title')
+        +typewriter({text: ['Passion for programming <i class="heart fas fa-heart"></i>', 'Exceptional User Experience', 'Responsive & Pixel-perfect layouts', 'Advanced problem-solving skills'], loop: 'true', waitFor: 'title'}, 'subtitle')

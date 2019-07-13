@@ -1,0 +1,18 @@
+$breakpoints: (
+  mobile: 590px,
+  tablet: 768px,
+  laptop: 1024px,
+  desktop: 1280px
+);
+
+@mixin respond-above($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}

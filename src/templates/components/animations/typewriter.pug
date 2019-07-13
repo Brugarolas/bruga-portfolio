@@ -1,0 +1,13 @@
+mixin typewriter(data, extraClasses)
+  - var multiple = Array.isArray(data.text)
+  - var text = multiple ? data.text.join('|') : data.text
+  - var separator = multiple ? '|' : undefined
+
+  p.typewriter(
+    data-id=data.id
+    data-text=text
+    data-loop=data.loop
+    data-wait-for=data.waitFor
+    data-separator=separator
+    class=extraClasses
+  )

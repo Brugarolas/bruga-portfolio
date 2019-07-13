@@ -1,0 +1,46 @@
+// Google Fonts
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700|Open+Sans:300,400,600);
+
+// Variants
+$roboto-variants: (
+  light: 300,
+  regular: 400,
+  bold: 700
+);
+
+$open-sans-variants: (
+  light: 300,
+  regular: 400,
+  semibold: 600
+);
+
+// Variables
+$roboto-slab-font: 'Roboto Slab', serif;
+$open-sans-font: 'Open Sans', sans-serif;
+
+// Fonts
+@mixin roboto-slab($variant, $size: 'inherit') {
+  @if map-has-key($roboto-variants, $variant) {
+    $weight: map-get($roboto-variants, $variant);
+
+    font-family: $roboto-slab-font;
+    font-weight: $weight;
+    font-style: normal;
+    font-size: $size;
+  } @else {
+    @warn 'Invalid Roboto variant: #{$variant}.';
+  }
+}
+
+@mixin open-sans($variant, $size: 'inherit') {
+  @if map-has-key($open-sans-variants, $variant) {
+    $weight: map-get($open-sans-variants, $variant);
+
+    font-family: $open-sans-font;
+    font-weight: $weight;
+    font-style: normal;
+    font-size: $size;
+  } @else {
+    @warn 'Invalid Open Sans variant: #{$variant}.';
+  }
+}
