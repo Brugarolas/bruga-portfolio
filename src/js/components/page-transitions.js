@@ -8,7 +8,7 @@ const calcPageTransition = (from, to) => {
   if (from < to) {
     return { fromClass: 'page--moveToTop', toClass: 'page--moveFromBottom' }
   } else {
-    return { fromClass: 'page--moveFromTop', toClass: 'page--moveToBottom' }
+    return { fromClass: 'page--moveToBottom', toClass: 'page--moveFromTop' }
   }
 }
 
