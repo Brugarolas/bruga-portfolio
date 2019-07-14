@@ -3,12 +3,16 @@ import requestAnimationFrame from '../raf.js'
 const TRANSITION_DURATION = 705;
 const ACTIVE_CLASS = 'page--current';
 const ONTOP_CLASS = 'page--ontop';
+const ACTIVE_LINK_CLASS = 'header-navbar__link--selected';
 
 const calcPageTransition = (from, to) => {
+  const prevLinks = document.querySelectorAll(`.${ACTIVE_LINK_CLASS}`);
+  const nextLinks = document.querySelectorAll(`.header-navbar__link[data-transition-to="${to}"]`)
+
   if (from < to) {
-    return { fromClass: 'page--moveToTop', toClass: 'page--moveFromBottom' }
+    return { prevLinks, nextLinks, fromClass: 'page--moveToTop', toClass: 'page--moveFromBottom' }
   } else {
-    return { fromClass: 'page--moveToBottom', toClass: 'page--moveFromTop' }
+    return { prevLinks, nextLinks, fromClass: 'page--moveToBottom', toClass: 'page--moveFromTop' }
   }
 }
 
@@ -26,6 +30,13 @@ const doPageTransition = (actualPage, nextPage, pageTransition) => {
     nextPage.classList.add(pageTransition.toClass);
     nextPage.classList.add(ACTIVE_CLASS);
     nextPage.classList.add(ONTOP_CLASS);
+
+    pageTransition.prevLinks.forEach(element => {
+      element.classList.remove(ACTIVE_LINK_CLASS);
+    });
+    pageTransition.nextLinks.forEach(element => {
+      element.classList.add(ACTIVE_LINK_CLASS);
+    });
 
     setTimeout(() => {
       requestAnimationFrame(() => {
