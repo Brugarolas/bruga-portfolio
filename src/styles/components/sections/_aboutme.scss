@@ -1,14 +1,126 @@
 .aboutme {
   position: relative;
   height: 100%;
+  width: 100%;
   box-sizing: border-box;
   background-color: #191a28;
   padding: 40px 60px;
 
   .aboutme__header {
-    color: #fff;
-    @include roboto-slab('regular', 48px);
-    text-align: center;
+    display: block;
+    width: 100%;
     padding: 30px 0;
+    box-sizing: border-box;
+    @include roboto-slab('regular', 48px);
+    letter-spacing: 2px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .aboutme__content {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+
+    .aboutme__content__section {
+      width: 100%;
+      padding: 20px 50px;
+      box-sizing: border-box;
+
+      .aboutme__content__text {
+        @include open-sans('regular', 20px);
+        margin: 50px 20px;
+        line-height: 28px;
+        letter-spacing: 1px;
+
+        .paragraph {
+          margin: 25px 0;
+        }
+      }
+
+      .aboutme__content__section__title {
+        display: block;
+        width: 100%;
+        @include roboto-slab('regular', 28px);
+        letter-spacing: 2px;
+        color: #fff;
+        text-align: center;
+      }
+    }
+
+    .aboutme__content__image-wrapper {
+      display: flex;
+      width: 100%;
+      flex-flow: row;
+      align-items: center;
+      justify-content: center;
+
+      .aboutme__content__image {
+        width: 120px;
+        border: 2px solid #fff;
+        border-color: #fffb;
+      }
+    }
+
+    .aboutme__content__name {
+      @include roboto-slab('regular', 24px);
+      letter-spacing: 1px;
+      margin: 10px 20px;
+    }
+    .aboutme__content__location {
+      @include roboto-slab('light', 20px);
+      letter-spacing: 1px;
+      margin: 10px 20px;
+    }
+    .aboutme__content__icon {
+      margin-right: 10px;
+      font-size: 20px;
+    }
+
+    .aboutme__content__skills {
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      width: 100%;
+      overflow: visible;
+
+      .aboutme__content__skills__title {
+        @include roboto-slab('regular', 22px);
+        letter-spacing: 1px;
+        flex: 0 0 25%;
+        padding-right: 20px;
+        box-sizing: border-box;
+
+        display: flex;
+        align-items: center;
+        justify-content: end;
+      }
+      .aboutme__content__skills__set {
+        flex: 0 0 75%;
+        margin: 25px 0;
+
+        .aboutme__content__skill {
+          position: relative;
+          display: inline-block;
+          width: 158px;
+          padding: 10px 8px 10px 36px;
+          margin: 8px;
+          box-sizing: border-box;
+          text-align: center;
+          background-color: lighten(#191a28, 10%);
+          box-shadow: 1px 1px 2px 1px #050709;
+          border-radius: 4px;
+          font-size: 18px;
+
+          .aboutme__content__icon {
+            margin-left: 0;
+            position: absolute;
+            left: 15px;
+            top: 7px;
+            font-size: 28px;
+          }
+        }
+      }
+    }
   }
 }
