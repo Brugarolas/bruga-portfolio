@@ -1,13 +1,8 @@
-@mixin global-content {
+@mixin section-top-bottom {
   display: block;
-  box-sizing: border-box;
+  position: absolute;
+  left: 0;
   width: 100%;
-  padding-left: 40px;
-  padding-right: 40px;
-  transition: padding 0.3s ease-in-out;
-
-  @include respond-above(laptop) {
-    padding-left: 20%;
-    padding-right: 20%;
-  }
+  padding: 40px 72px;
+  box-sizing: border-box;
 }

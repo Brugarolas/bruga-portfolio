@@ -1,0 +1,29 @@
+.link-icon {
+  font-size: 36px;
+  color: #fff;
+  opacity: 0.80;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+  &:not(:last-child) {
+    margin-right: 18px;
+  }
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  &.link-icon--local {
+    font-size: 48px;
+  }
+
+  &.link-icon--light {
+    opacity: 0.50;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@mixin animated-bottom-border {
+  display: block;
+  content: '';
+  margin: auto;
+  margin-top: 2px;
+  height: 2px;
+  border-radius: 5px;
+  transition: width .5s ease-in-out, background-color .5s ease-in-out;
+}
+
+.link-local {
+  display: inline-block;
+  @include open-sans('semibold', 20px);
+  color: #fff;
+  letter-spacing: 1px;
+  text-decoration: none;
+  opacity: 0.80;
+  cursor: pointer;
+  transition: opacity .5s ease-in-out;
+
+  &:not(:last-child) {
+    margin-right: 25px;
+  }
+
+  &::after {
+    @include animated-bottom-border();
+    width: 0;
+    background: transparent;
+  }
+
+  &:hover {
+    opacity: 1;
+
+    &::after {
+      width: 100%;
+      background: #fff;
+    }
+  }
+
+  &.link-local--selected {
+    opacity: 1;
+
+    &::after {
+      @include animated-bottom-border();
+      width: 100%;
+      background: #fff;
+    }
+  }
+}

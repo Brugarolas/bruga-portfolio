@@ -1,4 +1,4 @@
 mixin header-navbar(selected = 1)
   nav.header-navbar
-    a.header-navbar__link(data-transition-to=1 class=selected === 1 ? 'header-navbar__link--selected' : '') Home
-    a.header-navbar__link(data-transition-to=2 class=selected === 2 ? 'header-navbar__link--selected' : '') About me
+    +link-local('Home', 1, selected)
+    +link-local('About me', 2, selected)
