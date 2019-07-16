@@ -1,4 +1,5 @@
-import requestAnimationFrame from '../raf.js'
+import requestAnimationFrame from '../utils/raf.js';
+import addOnClick from '../utils/add-on-click.js'
 
 const TRANSITION_DURATION = 705;
 const ACTIVE_CLASS = 'page--current';
@@ -15,14 +16,6 @@ const calcPageTransition = (from, to) => {
     return { prevLinks, nextLinks, fromClass: 'page--moveToBottom', toClass: 'page--moveFromTop' }
   }
 }
-
-const addOnClick = (element, onClick) => {
-  if (element.addEventListener) {
-    element.addEventListener('click', onClick, false);
-  } else if (element.attachEvent) {
-    element.attachEvent('click', onClick);
-  }
-};
 
 const doPageTransition = (actualPage, nextPage, pageTransition) => {
   requestAnimationFrame(() => {

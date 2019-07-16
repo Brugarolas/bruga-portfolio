@@ -1,0 +1,89 @@
+$button-position: 20px;
+$button-size: 46px;
+$line-width: 26px;
+$line-height: 2px;
+$line-color: #07080a;
+
+@mixin navbar-icon__line {
+  width: $line-width;
+  height: $line-height;
+  background-color: $line-color;
+  display: inline-block;
+}
+@mixin navbar-icon__before-after {
+  content: '';
+  position: absolute;
+  left: 0;
+  transition: all .2s;
+}
+
+.floating-navbar {
+  position: fixed;
+  z-index: 5;
+
+  .floating-navbar__button {
+    position: fixed;
+    display: block;
+    top: $button-position;
+    right: $button-position;
+    height: $button-size;
+    width: $button-size;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #ddd;
+    box-shadow: 0 0 5px 1px #333;
+    cursor: pointer;
+    z-index: 8;
+
+    .floating-navbar__button__icon {
+      position: relative;
+      margin-top: ($button-size - $line-height) / 2;
+      @include navbar-icon__line();
+
+      &::before {
+        @include navbar-icon__before-after();
+        @include navbar-icon__line();
+        top: $line-height * 3;
+      }
+      &::after {
+        @include navbar-icon__before-after();
+        @include navbar-icon__line();
+        top: -$line-height * 3;
+      }
+    }
+  }
+
+  .floating-navbar__background {
+    position: fixed;
+    top: $button-position;
+    right: $button-position;
+    height: $button-size;
+    width: $button-size;
+    border-radius: 50%;
+    background-image: radial-gradient(#005a73, #71006d);
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+    z-index: 6;
+  }
+
+  &.floating-navbar--open {
+    .floating-navbar__button .floating-navbar__button__icon {
+      background-color: transparent;
+    }
+    .floating-navbar__button .floating-navbar__button__icon::before {
+      top: 0;
+      transform: rotate(135deg);
+    }
+    .floating-navbar__button .floating-navbar__button__icon::after {
+      top: 0;
+      transform: rotate(-135deg);
+    }
+
+    /* .floating-navbar__background {
+      transform: scale(50); // Done in JS
+    } */
+  }
+
+  @include respond-above(tablet) {
+    display: none;
+  }
+}

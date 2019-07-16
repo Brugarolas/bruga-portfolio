@@ -4,7 +4,25 @@
   width: 100%;
   box-sizing: border-box;
   background-color: #191a28;
-  padding: 40px 60px;
+  padding: 40px 36px;
+
+  @include respond-above(mobile) {
+    padding: 40px 60px;
+  }
+  @include respond-above(desktop) {
+    padding: 40px 32px;
+  }
+  @include respond-above(widescreen) {
+    padding: 40px 60px;
+  }
+
+  &.page.page--current {
+    overflow-y: auto;
+
+    @include respond-above(widescreen) {
+      overflow-y: hidden;
+    }
+  }
 
   .aboutme__header {
     display: block;
@@ -19,22 +37,39 @@
 
   .aboutme__content {
     width: 100%;
-    display: flex;
-    flex-flow: row;
+
+    @include respond-above(desktop) {
+      display: flex;
+      flex-flow: row;
+    }
 
     .aboutme__content__section {
       width: 100%;
-      padding: 20px 50px;
+      padding: 20px 0;
       box-sizing: border-box;
+
+      @include respond-above(tablet) {
+        padding: 20px 50px;
+      }
+      @include respond-above(desktop) {
+        padding: 20px 25px;
+      }
+      @include respond-above(widescreen) {
+        padding: 20px 50px;
+      }
 
       .aboutme__content__text {
         @include open-sans('regular', 20px);
-        margin: 50px 20px;
+        margin: 50px 0;
         line-height: 28px;
         letter-spacing: 1px;
 
         .paragraph {
           margin: 25px 0;
+        }
+
+        @include respond-above(desktop) {
+          margin: 50px 20px;
         }
       }
 
@@ -87,17 +122,29 @@
       .aboutme__content__skills__title {
         @include roboto-slab('regular', 22px);
         letter-spacing: 1px;
-        flex: 0 0 25%;
+        flex: 0 0 100%;
         padding-right: 20px;
         box-sizing: border-box;
+        text-align: center;
+        margin-top: 25px;
 
-        display: flex;
-        align-items: center;
-        justify-content: end;
+        @include respond-above(tablet) {
+          display: flex;
+          align-items: center;
+          justify-content: end;
+          flex: 0 0 140px;
+          margin-top: 0;
+        }
       }
       .aboutme__content__skills__set {
-        flex: 0 0 75%;
+        flex: 0 0 100%;
         margin: 25px 0;
+        text-align: center;
+
+        @include respond-above(tablet) {
+          flex: 0 0 calc(100% - 140px);
+          text-align: right;
+        }
 
         .aboutme__content__skill {
           position: relative;

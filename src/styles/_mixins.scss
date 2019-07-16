@@ -3,6 +3,10 @@
   position: absolute;
   left: 0;
   width: 100%;
-  padding: 40px 72px;
+  padding: 24px 40px;
   box-sizing: border-box;
+
+  @include respond-above(tablet) {
+    padding: 40px 72px;
+  }
 }

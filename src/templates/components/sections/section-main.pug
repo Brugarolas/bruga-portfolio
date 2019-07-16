@@ -4,10 +4,10 @@ mixin section-main(backgroundPicture, name, links)
       +image-background(backgroundPicture, 'main__background-image')
 
     header.main__top
-      div.main__top__name= name
       div.main__top__icons
         +link-icon(links.linkedin, 'fab fa-linkedin')
         +link-icon(links.github, 'fab fa-github')
+      div.main__top__name= name
 
     div.main__content-wrapper
       div.main__content

@@ -1,6 +1,11 @@
 .header-navbar {
+  display: none;
   position: absolute;
   top: 0;
   right: 0;
   padding: 40px 60px;
+
+  @include respond-above(tablet) {
+    display: block;
+  }
 }

@@ -1,8 +1,10 @@
 $breakpoints: (
+  smallmobile: 420px,
   mobile: 590px,
   tablet: 768px,
   laptop: 1024px,
-  desktop: 1280px
+  desktop: 1280px,
+  widescreen: 1720px
 );
 
 @mixin respond-above($breakpoint) {
