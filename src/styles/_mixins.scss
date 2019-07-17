@@ -10,3 +10,14 @@
     padding: 40px 72px;
   }
 }
+
+@mixin text-header {
+  display: block;
+  width: 100%;
+  padding: 30px 0;
+  box-sizing: border-box;
+  @include roboto-slab('regular', 48px);
+  letter-spacing: 2px;
+  color: #fff;
+  text-align: center;
+}

@@ -1,0 +1,7 @@
+.experience {
+  background-color: #241321;
+
+  .experience__header {
+    @include text-header();
+  }
+}

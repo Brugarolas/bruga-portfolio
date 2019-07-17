@@ -1,7 +1,4 @@
 .aboutme {
-  position: relative;
-  height: 100%;
-  width: 100%;
   box-sizing: border-box;
   background-color: #191a28;
   padding: 40px 36px;
@@ -25,14 +22,7 @@
   }
 
   .aboutme__header {
-    display: block;
-    width: 100%;
-    padding: 30px 0;
-    box-sizing: border-box;
-    @include roboto-slab('regular', 48px);
-    letter-spacing: 2px;
-    color: #fff;
-    text-align: center;
+    @include text-header();
   }
 
   .aboutme__content {
@@ -182,5 +172,13 @@
         }
       }
     }
+  }
+
+  .aboutme__bottom {
+    display: block;
+    width: 100%;
+    padding: 0 40px 24px 40px;
+    box-sizing: border-box;
+    text-align: center;
   }
 }
