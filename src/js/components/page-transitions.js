@@ -3,7 +3,6 @@ import addOnClick from '../utils/add-on-click.js'
 
 const TRANSITION_DURATION = 705;
 const ACTIVE_CLASS = 'page--current';
-const ONTOP_CLASS = 'page--ontop';
 const ACTIVE_LINK_CLASS = 'link-local--selected';
 
 const ACTIVE_MENU_CLASS = 'floating-navbar--open';
@@ -42,7 +41,6 @@ const doPageTransition = async (actualPage, nextPage, pageTransition) => {
     actualPage.classList.add(pageTransition.fromClass);
     nextPage.classList.add(pageTransition.toClass);
     nextPage.classList.add(ACTIVE_CLASS);
-    nextPage.classList.add(ONTOP_CLASS);
 
     pageTransition.prevLinks.forEach(element => {
       element.classList.remove(ACTIVE_LINK_CLASS);
@@ -56,7 +54,6 @@ const doPageTransition = async (actualPage, nextPage, pageTransition) => {
         actualPage.classList.remove(pageTransition.fromClass);
         actualPage.classList.remove(ACTIVE_CLASS);
         nextPage.classList.remove(pageTransition.toClass);
-        nextPage.classList.remove(ONTOP_CLASS);
       });
     }, TRANSITION_DURATION);
   });

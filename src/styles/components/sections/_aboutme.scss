@@ -59,9 +59,9 @@
       }
 
       .aboutme__content__text {
-        @include open-sans('regular', 20px);
+        @include open-sans('regular', 18px);
         margin: 50px 0;
-        line-height: 28px;
+        line-height: 26px;
         letter-spacing: 1px;
 
         .paragraph {
@@ -69,6 +69,8 @@
         }
 
         @include respond-above(desktop) {
+          font-size: 20px;
+          line-height: 28px;
           margin: 50px 20px;
         }
       }
@@ -143,28 +145,39 @@
 
         @include respond-above(tablet) {
           flex: 0 0 calc(100% - 140px);
-          text-align: right;
+          text-align: left;
         }
 
         .aboutme__content__skill {
           position: relative;
           display: inline-block;
-          width: 158px;
-          padding: 10px 8px 10px 36px;
+          width: 132px;
+          padding: 8px 8px 8px 32px;
           margin: 8px;
           box-sizing: border-box;
           text-align: center;
           background-color: lighten(#191a28, 10%);
           box-shadow: 1px 1px 2px 1px #050709;
           border-radius: 4px;
-          font-size: 18px;
+          font-size: 16px;
 
           .aboutme__content__icon {
             margin-left: 0;
             position: absolute;
-            left: 15px;
+            left: 11px;
             top: 7px;
-            font-size: 28px;
+            font-size: 24px;
+          }
+
+          @include respond-above(mobile) {
+            width: 158px;
+            padding: 10px 8px 10px 36px;
+            font-size: 18px;
+
+            .aboutme__content__icon {
+              left: 15px;
+              font-size: 28px;
+            }
           }
         }
       }

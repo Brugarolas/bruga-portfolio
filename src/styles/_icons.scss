@@ -4,6 +4,16 @@ $fa-font-path: '../../node_modules/@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/solid';
 @import '@fortawesome/fontawesome-free/scss/brands';
 
+@mixin skill-icon-correction {
+  font-size: 22px !important;
+  top: 9px !important;
+
+  @include respond-above(mobile) {
+    font-size: 24px !important;
+    top: 10px !important;
+  }
+}
+
 .heart {
   color: #e63434; //#d90000;
   font-size: 26px;
@@ -46,8 +56,7 @@ $fa-font-path: '../../node_modules/@fortawesome/fontawesome-free/webfonts';
 }
 .icon-database {
   color: #ffb900;
-  font-size: 24px !important;
-  top: 10px !important;
+  @include skill-icon-correction();
 }
 .icon-maven {
   color: #863086;
@@ -63,8 +72,7 @@ $fa-font-path: '../../node_modules/@fortawesome/fontawesome-free/webfonts';
 }
 .icon-webpack {
   color: #2ca4e3;
-  font-size: 24px !important;
-  top: 10px !important;
+  @include skill-icon-correction();
 }
 .icon-git {
   color: #f05030;

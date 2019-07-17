@@ -25,10 +25,6 @@
       z-index: 1;
     }
 
-    &.page--ontop {
-      z-index: 999;
-    }
-
     &.page--moveToTop {
       -webkit-animation: moveToTop .7s ease-in-out both;
       animation: moveToTop .7s ease-in-out both;
