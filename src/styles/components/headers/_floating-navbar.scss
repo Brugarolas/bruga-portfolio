@@ -65,6 +65,31 @@ $line-color: #07080a;
     z-index: 6;
   }
 
+  .floating-navbar__content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease-in-out, transform 0.8s ease-in-out;
+    pointer-events: none;
+    z-index: 7;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .floating-navbar__content__link {
+      @include open-sans('semibold', 32px);
+      margin-right: 0;
+      margin-bottom: 20px;
+      opacity: 1;
+    }
+  }
+
   &.floating-navbar--open {
     .floating-navbar__button .floating-navbar__button__icon {
       background-color: transparent;
@@ -78,12 +103,42 @@ $line-color: #07080a;
       transform: rotate(-135deg);
     }
 
-    /* .floating-navbar__background {
+    /*.floating-navbar__background {
       transform: scale(50); // Done in JS
-    } */
+    }*/
+
+    .floating-navbar__content {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(0);
+      transition: none;
+      pointer-events: inherit;
+
+      .floating-navbar__content__link {
+        animation: fadeInLeft 0.3s ease-in-out both;
+        animation-delay: .5s;
+
+        &:nth-child(2) {
+          animation-delay: .8s;
+        }
+      }
+    }
   }
 
   @include respond-above(tablet) {
-    display: none;
+    &:not(.floating-navbar--open) {
+      display: none;
+    }
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }

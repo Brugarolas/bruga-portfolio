@@ -3,5 +3,6 @@ mixin floating-navbar(selected = 1)
     div.floating-navbar__button
       i.floating-navbar__button__icon
     div.floating-navbar__background
-      +link-local('Home', 1, selected)
-      +link-local('About me', 2, selected)
+    div.floating-navbar__content
+      +link-local('Home', 1, selected, 'floating-navbar__content__link')
+      +link-local('About me', 2, selected, 'floating-navbar__content__link')

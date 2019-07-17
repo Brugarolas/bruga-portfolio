@@ -1,2 +1,6 @@
-mixin link-local(text, transitionTo, selected = 1)
-  a.link-local(data-transition-to=transitionTo class=selected === transitionTo ? 'link-local--selected' : '')= text
+mixin link-local(text, transitionTo, selected = 1, extraClasses)
+  - var selected = selected === transitionTo ? 'link-local--selected' : ''
+  - var extra = extraClasses ? ` ${extraClasses}` : ''
+  - var classes = `${selected}${extra}`
+
+  a.link-local(data-transition-to=transitionTo class=classes)= text

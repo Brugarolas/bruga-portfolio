@@ -6,6 +6,24 @@ const ACTIVE_CLASS = 'page--current';
 const ONTOP_CLASS = 'page--ontop';
 const ACTIVE_LINK_CLASS = 'link-local--selected';
 
+const ACTIVE_MENU_CLASS = 'floating-navbar--open';
+const CLOSE_MENU_BUTTON = 'floating-navbar__button';
+const CLOSE_MENU_DURATION = 800;
+
+const closeFloatingMenu = () => {
+  if (!document.querySelector(`.${ACTIVE_MENU_CLASS}`)) {
+    return true;
+  }
+
+  return new Promise((resolve, reject) => {
+    document.querySelector(`.${CLOSE_MENU_BUTTON}`).click();
+
+    setTimeout(() => {
+      resolve(true);
+    }, CLOSE_MENU_DURATION / 2);
+  });
+};
+
 const calcPageTransition = (from, to) => {
   const prevLinks = document.querySelectorAll(`.${ACTIVE_LINK_CLASS}`);
   const nextLinks = document.querySelectorAll(`.link-local[data-transition-to="${to}"]`)
@@ -17,7 +35,9 @@ const calcPageTransition = (from, to) => {
   }
 }
 
-const doPageTransition = (actualPage, nextPage, pageTransition) => {
+const doPageTransition = async (actualPage, nextPage, pageTransition) => {
+  await closeFloatingMenu();
+
   requestAnimationFrame(() => {
     actualPage.classList.add(pageTransition.fromClass);
     nextPage.classList.add(pageTransition.toClass);
