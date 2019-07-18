@@ -58,7 +58,7 @@ module.exports = {
         loader: 'pug-loader'
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]',
@@ -66,7 +66,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(woff|woff2|ttf|eot|svg)$/,
+        test: /\.(woff|woff2|ttf|eot)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]',

@@ -1,5 +1,45 @@
+- var sngularLogo = require('@/images/sngular-logo.svg')
+- var amarisLogo = require('@/images/amaris-logo.png')
+- var clubLibroLogo = require('@/images/cil-logo.png')
+- var alfatecLogo = require('@/images/alfatec-logo.svg')
+
 mixin section-experience()
   section.experience.page(data-page=3)
     +header-navbar()
 
     header.experience__header Work History
+
+    div.experience__content
+      ul.work-history
+        li.work-history__company
+          img.work-history__company__logo.sngular(src=sngularLogo alt='S|ngular')
+          ul.work-history__company__jobs
+            li.work-history__company__jobs__position
+              span.work-history__company__jobs__position__client BBVA
+              span.work-history__company__jobs__position__title Senior front-end developer
+              span.work-history__company__jobs__position__desc Working at BBVA Mobile Channel, developing the three times award-winning best banking European mobile app.
+        li.work-history__company
+          img.work-history__company__logo.amaris(src=amarisLogo alt='Amaris')
+          ul.work-history__company__jobs
+            li.work-history__company__jobs__position
+              span.work-history__company__jobs__position__client El Corte Inglés
+              span.work-history__company__jobs__position__title Full-stack developer
+              span.work-history__company__jobs__position__desc Working at El Corte Inglés, maintaining and developing their multiple online shopping webs.
+            li.work-history__company__jobs__position
+              span.work-history__company__jobs__position__client Ventura24
+              span.work-history__company__jobs__position__title Front-end Developer
+              span.work-history__company__jobs__position__desc Working at Ventura24, maintaining and developing new features for their modern lottery online store.
+        li.work-history__company
+          img.work-history__company__logo.amaris(src=clubLibroLogo alt='Club Internacional del Libro')
+          ul.work-history__company__jobs
+            li.work-history__company__jobs__position
+              span.work-history__company__jobs__position__client Galería del Coleccionista
+              span.work-history__company__jobs__position__title Full-stack developer
+              span.work-history__company__jobs__position__desc Working at Galería del Coleccionista developing and maintaining multiple marketing and business management applications.
+        li.work-history__company
+          img.work-history__company__logo.amaris(src=alfatecLogo alt='Alfatec Sistemas')
+          ul.work-history__company__jobs
+            li.work-history__company__jobs__position
+              span.work-history__company__jobs__position__client Spanish National Health System
+              span.work-history__company__jobs__position__title Full-stack developer
+              span.work-history__company__jobs__position__desc Working at Spanish National Health System developing and maintaining multiple e-Health web applications and SOAP services for healthcare administration.

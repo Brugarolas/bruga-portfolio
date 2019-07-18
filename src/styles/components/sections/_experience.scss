@@ -4,4 +4,21 @@
   .experience__header {
     @include text-header();
   }
+
+  .work-history {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .work-history__company {
+        display: flex;
+
+        .work-history__company__logo {
+          flex: 0 0 200px;
+        }
+        .work-history__company__jobs {
+          flex: 0 0 calc(100% - 200px);
+        }
+      }
+  }
 }

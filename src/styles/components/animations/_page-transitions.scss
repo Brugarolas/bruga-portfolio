@@ -49,32 +49,32 @@
 
 @-webkit-keyframes moveToTop {
 	from { }
-	to { -webkit-transform: translateY(-100%); }
+	to { -webkit-transform: translate3d(0, -100%, 0); }
 }
 @keyframes moveToTop {
 	from { }
-	to { -webkit-transform: translateY(-100%); transform: translateY(-100%); }
+	to { -webkit-transform: translate3d(0, -100%, 0); transform: translate3d(0, -100%, 0); }
 }
 
 @-webkit-keyframes moveFromTop {
-	from { -webkit-transform: translateY(-100%); }
+	from { -webkit-transform: translate3d(0, -100%, 0); }
 }
 @keyframes moveFromTop {
-	from { -webkit-transform: translateY(-100%); transform: translateY(-100%); }
+	from { -webkit-transform: translate3d(0, -100%, 0); transform: translate3d(0, -100%, 0); }
 }
 
 @-webkit-keyframes moveToBottom {
 	from { }
-	to { -webkit-transform: translateY(100%); }
+	to { -webkit-transform: translate3d(0, 100%, 0); }
 }
 @keyframes moveToBottom {
 	from { }
-	to { -webkit-transform: translateY(100%); transform: translateY(100%); }
+	to { -webkit-transform: translate3d(0, 100%, 0); transform:translate3d(0, 100%, 0); }
 }
 
 @-webkit-keyframes moveFromBottom {
-	from { -webkit-transform: translateY(100%); }
+	from { -webkit-transform: translate3d(0, 100%, 0); }
 }
 @keyframes moveFromBottom {
-	from { -webkit-transform: translateY(100%); transform: translateY(100%); }
+	from { -webkit-transform: translate3d(0, 100%, 0); transform: translate3d(0, 100%, 0); }
 }

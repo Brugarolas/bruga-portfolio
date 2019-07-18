@@ -129,7 +129,7 @@ $line-color: #07080a;
     }
   }
 
-  @include respond-above(tablet) {
+  @include respond-above(laptop) {
     &:not(.floating-navbar--open) {
       display: none;
     }

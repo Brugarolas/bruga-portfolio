@@ -5,7 +5,7 @@
   right: 0;
   padding: 40px 60px;
 
-  @include respond-above(tablet) {
+  @include respond-above(laptop) {
     display: block;
   }
 }
