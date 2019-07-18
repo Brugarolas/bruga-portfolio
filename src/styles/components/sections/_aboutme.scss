@@ -15,10 +15,6 @@
 
   &.page.page--current {
     overflow-y: auto;
-
-    @include respond-above(widescreen) {
-      overflow-y: hidden;
-    }
   }
 
   .aboutme__header {
@@ -27,6 +23,7 @@
 
   .aboutme__content {
     width: 100%;
+    min-height: calc(100% - 200px);
 
     @include respond-above(desktop) {
       display: flex;
