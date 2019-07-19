@@ -3,6 +3,7 @@ import Typewriter from 'typewriter-effect/dist/core';
 const LOOP_DELAY = 1000;
 const WAIT_DELAY = 500;
 const BASE_CONF = { wrapperClassName: 'typewriter__wrapper', cursorClassName: 'typewriter__cursor' };
+const TYPEWRITER_HIDDEN_CLASS = 'typewriter--hidden';
 
 const initTypewriter = (selector = '.typewriter') => {
   const typewriters = {};
@@ -18,10 +19,18 @@ const initTypewriter = (selector = '.typewriter') => {
     return { id, strings, loop, waitFor, autoStart };
   };
 
-  const addStrings = (typewriter, strings) => {
+  const addStrings = (typewriter, strings, loop = false) => {
     if (Array.isArray(strings)) {
-      strings.forEach(string => {
-        typewriter.typeString(string).pauseFor(LOOP_DELAY).deleteAll();
+      const lastIndex = strings.length - 1;
+
+      strings.forEach((string, index) => {
+        const isLast = index === lastIndex;
+
+        if (!loop && isLast) {
+          typewriter.typeString(string);
+        } else {
+          typewriter.typeString(string).pauseFor(LOOP_DELAY).deleteAll();
+        }
       });
     } else {
       typewriter.typeString(strings);
@@ -36,16 +45,16 @@ const initTypewriter = (selector = '.typewriter') => {
       typewriters[id] = typewriter;
     }
 
-    addStrings(typewriter, strings);
+    addStrings(typewriter, strings, loop);
 
     if (waitFor) {
       const parentTypewriter = typewriters[waitFor];
       const startFunction = () => {
         setTimeout(() => { typewriter.start(); }, WAIT_DELAY);
-        element.classList.remove('typewriter--hidden');
+        element.classList.remove(TYPEWRITER_HIDDEN_CLASS);
       };
 
-      element.classList.add('typewriter--hidden');
+      element.classList.add(TYPEWRITER_HIDDEN_CLASS);
       parentTypewriter.callFunction(startFunction);
     } else {
       typewriter.start();

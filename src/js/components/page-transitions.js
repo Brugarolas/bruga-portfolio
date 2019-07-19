@@ -1,27 +1,10 @@
 import requestAnimationFrame from '../utils/raf.js';
 import addOnClick from '../utils/add-on-click.js'
+import subscriptions from '../utils/subscription.js';
 
 const TRANSITION_DURATION = 705;
 const ACTIVE_CLASS = 'page--current';
 const ACTIVE_LINK_CLASS = 'link-local--selected';
-
-const ACTIVE_MENU_CLASS = 'floating-navbar--open';
-const CLOSE_MENU_BUTTON = 'floating-navbar__button';
-const CLOSE_MENU_DURATION = 800;
-
-const closeFloatingMenu = () => {
-  if (!document.querySelector(`.${ACTIVE_MENU_CLASS}`)) {
-    return true;
-  }
-
-  return new Promise((resolve, reject) => {
-    document.querySelector(`.${CLOSE_MENU_BUTTON}`).click();
-
-    setTimeout(() => {
-      resolve(true);
-    }, CLOSE_MENU_DURATION / 2);
-  });
-};
 
 const calcPageTransition = (from, to) => {
   const prevLinks = document.querySelectorAll(`.${ACTIVE_LINK_CLASS}`);
@@ -35,7 +18,7 @@ const calcPageTransition = (from, to) => {
 }
 
 const doPageTransition = async (actualPage, nextPage, pageTransition) => {
-  await closeFloatingMenu();
+  await subscriptions.emit('page-transition-start');
 
   requestAnimationFrame(() => {
     actualPage.classList.add(pageTransition.fromClass);
@@ -54,6 +37,8 @@ const doPageTransition = async (actualPage, nextPage, pageTransition) => {
         actualPage.classList.remove(pageTransition.fromClass);
         actualPage.classList.remove(ACTIVE_CLASS);
         nextPage.classList.remove(pageTransition.toClass);
+
+        subscriptions.emit('page-transition-end');
       });
     }, TRANSITION_DURATION);
   });
