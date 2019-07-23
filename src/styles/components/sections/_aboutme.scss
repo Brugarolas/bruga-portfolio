@@ -1,21 +1,6 @@
 .aboutme {
-  box-sizing: border-box;
   background-color: #191a28;
-  padding: 40px 36px;
-
-  @include respond-above(mobile) {
-    padding: 40px 60px;
-  }
-  @include respond-above(desktop) {
-    padding: 40px 32px;
-  }
-  @include respond-above(widescreen) {
-    padding: 40px 60px;
-  }
-
-  &.page.page--current {
-    overflow-y: auto;
-  }
+  @include global-content-padding();
 
   .aboutme__header {
     @include text-header();
@@ -31,19 +16,7 @@
     }
 
     .aboutme__content__section {
-      width: 100%;
-      padding: 20px 0;
-      box-sizing: border-box;
-
-      @include respond-above(tablet) {
-        padding: 20px 50px;
-      }
-      @include respond-above(desktop) {
-        padding: 20px 25px;
-      }
-      @include respond-above(widescreen) {
-        padding: 20px 50px;
-      }
+      @include section-content-padding();
 
       .aboutme__content__text {
         @include open-sans('regular', 18px);

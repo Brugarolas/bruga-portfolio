@@ -1,7 +1,11 @@
 - var sngularLogo = require('@/images/sngular-logo.svg')
 - var amarisLogo = require('@/images/amaris-logo.png')
-- var clubLibroLogo = require('@/images/cil-logo.png')
+- var clubLibroLogo = require('@/images/cil2-logo.jpg')
 - var alfatecLogo = require('@/images/alfatec-logo.svg')
+- var bbvaLogo = require('@/images/bbva2-logo.png')
+- var eciLogo = require('@/images/eci-logo.png')
+- var v24Logo = require('@/images/ventura24-logo.png')
+- var smsLogo = require('@/images/sms-logo.svg')
 
 mixin section-experience()
   section.experience.page(data-page=3)
@@ -12,34 +16,34 @@ mixin section-experience()
     div.experience__content
       ul.work-history
         li.work-history__company
-          img.work-history__company__logo.sngular(src=sngularLogo alt='S|ngular')
+          +image-background(sngularLogo, 'work-history__company__logo')
           ul.work-history__company__jobs
             li.work-history__company__jobs__position
-              span.work-history__company__jobs__position__client BBVA
+              +image-background(bbvaLogo, 'work-history__company__jobs__position__client')
               span.work-history__company__jobs__position__title Senior front-end developer
-              span.work-history__company__jobs__position__desc Working at BBVA Mobile Channel, developing the three times award-winning best banking European mobile app.
+              span.work-history__company__jobs__position__desc Working at BBVA Mobile Channel, developing the three times award-winning best European banking and finances mobile app.
         li.work-history__company
-          img.work-history__company__logo.amaris(src=amarisLogo alt='Amaris')
+          +image-background(amarisLogo, 'work-history__company__logo')
           ul.work-history__company__jobs
             li.work-history__company__jobs__position
-              span.work-history__company__jobs__position__client El Corte Inglés
+              +image-background(eciLogo, 'work-history__company__jobs__position__client')
               span.work-history__company__jobs__position__title Full-stack developer
               span.work-history__company__jobs__position__desc Working at El Corte Inglés, maintaining and developing their multiple online shopping webs.
             li.work-history__company__jobs__position
-              span.work-history__company__jobs__position__client Ventura24
+              +image-background(v24Logo, 'work-history__company__jobs__position__client')
               span.work-history__company__jobs__position__title Front-end Developer
               span.work-history__company__jobs__position__desc Working at Ventura24, maintaining and developing new features for their modern lottery online store.
         li.work-history__company
-          +image-background(clubLibroLogo, 'work-history__company__logo cil')
+          +image-background(clubLibroLogo, 'work-history__company__logo')
           ul.work-history__company__jobs
             li.work-history__company__jobs__position
-              span.work-history__company__jobs__position__client Galería del Coleccionista
+              span.work-history__company__jobs__position__empty
               span.work-history__company__jobs__position__title Full-stack developer
               span.work-history__company__jobs__position__desc Working at Galería del Coleccionista developing and maintaining multiple marketing and business management applications.
         li.work-history__company
-          img.work-history__company__logo.amaris(src=alfatecLogo alt='Alfatec Sistemas')
+          +image-background(alfatecLogo, 'work-history__company__logo')
           ul.work-history__company__jobs
             li.work-history__company__jobs__position
-              span.work-history__company__jobs__position__client Spanish National Health System
+              +image-background(smsLogo, 'work-history__company__jobs__position__client')
               span.work-history__company__jobs__position__title Full-stack developer
               span.work-history__company__jobs__position__desc Working at Spanish National Health System developing and maintaining multiple e-Health web applications and SOAP services for healthcare administration.

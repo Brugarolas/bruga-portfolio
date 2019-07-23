@@ -7,11 +7,13 @@ import floatingNavbar from './components/floating-navbar.js';
 const initComponents = () => {
   requestAnimationFrame(() => {
     imageBackground();
-    typewriter();
   });
 
-  pageTransitions();
-  floatingNavbar();
+  setTimeout(() => {
+    typewriter();
+    pageTransitions();
+    floatingNavbar();
+  }, 50);
 };
 
 export default initComponents;

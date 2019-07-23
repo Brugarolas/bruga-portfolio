@@ -1,8 +1,25 @@
+@mixin experience-image {
+  flex: 0 0 200px;
+  background-size: contain;
+  background-color: white;
+  padding: 8px 20px 10px 20px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 80px;
+  max-width: 200px;
+  box-shadow: 0 0 2px 2px #0008;
+}
+
 .experience {
   background-color: #241321;
+  @include global-content-padding();
 
   .experience__header {
     @include text-header();
+  }
+
+  .experience__content {
+    @include section-content-padding();
   }
 
   .work-history {
@@ -12,18 +29,35 @@
 
       .work-history__company {
         display: flex;
+        align-items: center;
+        @include section-content-padding();
 
         .work-history__company__logo {
-          flex: 0 0 200px;
-          background-color: white;
-          padding: 8px 20px 10px 20px;
-          border-radius: 5px;
-          box-sizing: border-box;
-          height: 80px;
-          max-width: 200px;
+          @include experience-image();
         }
         .work-history__company__jobs {
           flex: 0 0 calc(100% - 200px);
+          margin: 0;
+          padding: 0;
+
+          .work-history__company__jobs__position {
+            display: flex;
+            list-style: none;
+            @include section-content-padding();
+
+            .work-history__company__jobs__position__client {
+              @include experience-image();
+            }
+            .work-history__company__jobs__position__empty {
+              flex: 0 0 200px;
+            }
+            .work-history__company__jobs__position__title {
+              flex: 0 0 200px;
+            }
+            .work-history__company__jobs__position__desc {
+              flex: 0 0 calc(100% - 400px);
+            }
+          }
         }
       }
   }

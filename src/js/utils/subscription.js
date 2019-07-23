@@ -1,7 +1,6 @@
 import nanoid from 'nanoid/non-secure';
 
 const NOT_FOUND = -1;
-
 const isPromise = (obj) => Promise.resolve(obj) === obj;
 
 class Subscription {
