@@ -1,22 +1,25 @@
 import Typewriter from 'typewriter-effect/dist/core';
+import nanoid from 'nanoid/non-secure';
+import subscriptions from '../utils/subscription.js';
 
+const BASE_SELECTOR = '.typewriter';
+const PAGE_SELECTOR = '.page.page--current'
 const LOOP_DELAY = 1000;
 const WAIT_DELAY = 500;
 const BASE_CONF = { wrapperClassName: 'typewriter__wrapper', cursorClassName: 'typewriter__cursor' };
 const TYPEWRITER_HIDDEN_CLASS = 'typewriter--hidden';
 
-const initTypewriter = (selector = '.typewriter') => {
+const initTypewriter = (selector = `${PAGE_SELECTOR} ${BASE_SELECTOR}`) => {
   const typewriters = {};
 
   const getElementData = (element) => {
-    const id = element.getAttribute('data-id');
     const separator = element.getAttribute('data-separator');
     const strings = separator ? element.getAttribute('data-text').split(separator) : element.getAttribute('data-text');
     const loop = element.getAttribute('data-loop') === 'true';
     const waitFor = element.getAttribute('data-wait-for');
     const autoStart = !Boolean(waitFor);
 
-    return { id, strings, loop, waitFor, autoStart };
+    return { strings, loop, waitFor, autoStart };
   };
 
   const addStrings = (typewriter, strings, loop = false) => {
@@ -37,13 +40,9 @@ const initTypewriter = (selector = '.typewriter') => {
     }
   };
 
-  document.querySelectorAll(selector).forEach(element => {
-    const { id, strings, loop, waitFor, autoStart } = getElementData(element);
+  const createTypewriter = (element) => {
+    const { strings, loop, waitFor, autoStart } = getElementData(element);
     const typewriter = new Typewriter(element, { loop, ...BASE_CONF });
-
-    if (id) {
-      typewriters[id] = typewriter;
-    }
 
     addStrings(typewriter, strings, loop);
 
@@ -59,6 +58,41 @@ const initTypewriter = (selector = '.typewriter') => {
     } else {
       typewriter.start();
     }
+
+    return typewriter;
+  }
+
+  const startTypewriter = (element) => {
+    let id = element.getAttribute('data-id');
+
+    if (!id) {
+      id = nanoid();
+      element.setAttribute('data-id', id);
+    }
+
+    if (typewriters[id]) {
+      typewriters[id].start();
+    } else {
+      typewriters[id] = createTypewriter(element);
+    }
+  };
+
+  const stopTypewriter = (element) => {
+    let id = element.getAttribute('data-id');
+
+    if (id && typewriters[id]) {
+      typewriters[id].stop();
+    }
+  };
+
+  /* On start and page change */
+  document.querySelectorAll(selector).forEach(startTypewriter);
+
+  subscriptions.on('page-transition-start', ({ next }) => {
+    next.querySelectorAll(BASE_SELECTOR).forEach(startTypewriter);
+  });
+  subscriptions.on('page-transition-end', ({ prev }) => {
+    prev.querySelectorAll(BASE_SELECTOR).forEach(stopTypewriter);
   });
 };
 

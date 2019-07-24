@@ -18,7 +18,7 @@ const calcPageTransition = (from, to) => {
 }
 
 const doPageTransition = async (actualPage, nextPage, pageTransition) => {
-  await subscriptions.emit('page-transition-start');
+  await subscriptions.emit('page-transition-start', { actual: actualPage, next: nextPage });
 
   requestAnimationFrame(() => {
     actualPage.classList.add(pageTransition.fromClass);
@@ -38,7 +38,7 @@ const doPageTransition = async (actualPage, nextPage, pageTransition) => {
         actualPage.classList.remove(ACTIVE_CLASS);
         nextPage.classList.remove(pageTransition.toClass);
 
-        subscriptions.emit('page-transition-end');
+        subscriptions.emit('page-transition-end', { prev: actualPage, actual: nextPage });
       });
     }, TRANSITION_DURATION);
   });
