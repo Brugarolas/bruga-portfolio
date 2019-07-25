@@ -20,30 +20,65 @@ mixin section-experience()
           ul.work-history__company__jobs
             li.work-history__company__jobs__position
               +image-background(bbvaLogo, { label: 'BBVA', classes: 'work-history__company__jobs__position__client' })
-              span.work-history__company__jobs__position__title Senior front-end developer
-              span.work-history__company__jobs__position__desc Working at BBVA Mobile Channel, developing the three times award-winning best European banking and finances mobile app.
+              div.work-history__company__jobs__position__title
+                p.title--main Senior front-end developer
+                p.title--date 12/2018 - Today
+              div.work-history__company__jobs__position__desc Working at BBVA Mobile Channel:
+                ul.feature-list
+                  li.feature Develop the three times award-winning best European banking and finances mobile app.
+                  li.feature Work closely with UX designers to offer the best user experience possible, including accessibility features.
+                  li.feature Use Ember as framework, LitElement for web components and Sass for CSS pre-processing.
+                  li.feature Integration and unit testing with QUnit, Web Driver and Cucumber.
         li.work-history__company
           +image-background(amarisLogo, { label: 'Amaris', classes: 'work-history__company__logo' })
           ul.work-history__company__jobs
             li.work-history__company__jobs__position
               +image-background(eciLogo, { label: 'El Corte Inglés', classes: 'work-history__company__jobs__position__client' })
-              span.work-history__company__jobs__position__title Full-stack developer
-              span.work-history__company__jobs__position__desc Working at El Corte Inglés, maintaining and developing their multiple online shopping webs.
+              div.work-history__company__jobs__position__title
+                p.title--main Full-stack developer
+                p.title--date 09/2018 - 12/2018
+              div.work-history__company__jobs__position__desc Working at El Corte Inglés:
+                ul.feature-list
+                  li.feature Maintain and develop their multiple online shopping webs (as El Corte Inglés, Supermercado, El Club del Gourmet Hipercor and Mascotas).
+                  li.feature Work with Node and native JavaScript, Express library and Dust.js as template engine.
+                  li.feature Work closely with UX designers to develop pixel-perfect layouts with Sass as CSS pre-processor and Adobe XD as prototyping tool.
+                  li.feature Use Vue.js framework for developing back office web apps.
             li.work-history__company__jobs__position
               +image-background(v24Logo, { label: 'Ventura 24', classes: 'work-history__company__jobs__position__client' })
-              span.work-history__company__jobs__position__title Front-end Developer
-              span.work-history__company__jobs__position__desc Working at Ventura24, maintaining and developing new features for their modern lottery online store.
+              div.work-history__company__jobs__position__title
+                p.title--main Front-end developer
+                p.title--date 05/2018 - 09/2018
+              div.work-history__company__jobs__position__desc Working at Ventura24:
+                ul.feature-list
+                  li.feature Maintain and develop new features for their modern lottery online store.
+                  li.feature Work with jQuery and native JavaScript, and Pug.js as template engine.
+                  li.feature Work closely with UX designers to develop pixel-perfect layouts with Sketch and Zepling as prototyping tools and LESS as CSS pre-processor.
+                  li.feature Use Grunt and Babel for module bundling and code transpiling.
         li.work-history__company
           +image-background(clubLibroLogo, { label: 'Club Internacional del Libro', classes: 'work-history__company__logo' })
           ul.work-history__company__jobs
             li.work-history__company__jobs__position
-              span.work-history__company__jobs__position__empty
-              span.work-history__company__jobs__position__title Full-stack developer
-              span.work-history__company__jobs__position__desc Working at Galería del Coleccionista developing and maintaining multiple marketing and business management applications.
+              div.work-history__company__jobs__position__empty
+              div.work-history__company__jobs__position__title
+                p.title--main Full-stack developer
+                p.title--date 08/2017 - 05/2018
+              div.work-history__company__jobs__position__desc Working at Club Internacional del Libro / Galería del Coleccionista:
+                ul.feature-list
+                  li.feature Develop and maintain multiple marketing and business management applications.
+                  li.feature Back-end: REST services made with Java 8, Spring Boot, Spring Framework, Hibernate and Oracle SQL.
+                  li.feature Front-end: Vue.js as framework, LESS as CSS pre-processor, Webpack for module bundling and Babel for code transpiling.
+                  li.feature Integration and unit testing with JUnit and Mockito for back-end; and Jest and Jasmine for front-end.
         li.work-history__company
           +image-background(alfatecLogo, { label: 'Alfatec Sistemas', classes: 'work-history__company__logo' })
           ul.work-history__company__jobs
             li.work-history__company__jobs__position
               +image-background(smsLogo, { label: 'Spanish National Health System', classes: 'work-history__company__jobs__position__client' })
-              span.work-history__company__jobs__position__title Full-stack developer
-              span.work-history__company__jobs__position__desc Working at Spanish National Health System developing and maintaining multiple e-Health web applications and SOAP services for healthcare administration.
+              div.work-history__company__jobs__position__title
+                p.title--main Full-stack developer
+                p.title--date 02/2015 - 08/2017
+              div.work-history__company__jobs__position__desc Working at Spanish National Health System:
+                ul.feature-list
+                  li.feature Develop and maintain multiple e-Health web applications and SOAP services for healthcare administration.
+                  li.feature Work with Java 7, Spring Framework, Hibernate, JSF/Primefaces, jQuery, Apache Solr and Oracle SQL.
+                  li.feature Streamlined deployment process by using continuous integration tools and agile development strategies with Jenkins, SonarQube and Jira.
+                  li.feature Perform regression and integration tests to verity software quality with JUnit, Mockito, SOAP UI and Selenium. Performance and scalability tests with SOAP UI.

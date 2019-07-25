@@ -7,7 +7,7 @@
   box-sizing: border-box;
   height: 80px;
   max-width: 200px;
-  /* box-shadow: 0 0 2px 2px #0008; */
+  box-shadow: 4px 4px 0 0 #793c6e;
 }
 
 .experience {
@@ -42,6 +42,7 @@
 
           .work-history__company__jobs__position {
             display: flex;
+            align-items: center;
             list-style: none;
             @include section-content-padding();
 
@@ -52,10 +53,31 @@
               flex: 0 0 200px;
             }
             .work-history__company__jobs__position__title {
-              flex: 0 0 200px;
+              flex: 0 0 225px;
+              padding-left: 25px;
+
+              .title--main {
+                @include roboto-slab('regular', 20px);
+                text-align: center;
+                margin: 0 0 10px 0;
+              }
+              .title--date {
+                @include open-sans('regular', 18px);
+                text-align: center;
+                margin: 0;
+                opacity: 0.8;
+              }
             }
             .work-history__company__jobs__position__desc {
-              flex: 0 0 calc(100% - 400px);
+              flex: 0 0 calc(100% - 425px);
+              padding-left: 25px;
+              @include open-sans('regular', 18px);
+              line-height: 28px;
+              opacity: 0.8;
+
+              .feature {
+                margin-top: 5px;
+              }
             }
           }
         }
