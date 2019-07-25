@@ -1,12 +1,11 @@
-@mixin experience-image {
-  flex: 0 0 200px;
+@mixin experience-image($width: 200px, $height: 80px, $padding: 8px 20px 10px 20px) {
   background-size: contain;
   background-color: white;
-  padding: 8px 20px 10px 20px;
+  padding: $padding;
   border-radius: 5px;
   box-sizing: border-box;
-  height: 80px;
-  max-width: 200px;
+  height: $height;
+  max-width: $width;
   box-shadow: 4px 4px 0 0 #793c6e;
 }
 
@@ -30,31 +29,113 @@
       .work-history__company {
         display: flex;
         align-items: center;
-        @include section-content-padding();
+        flex-direction: column;
+
+        @include respond-above(laptop) {
+          flex-direction: row;
+        }
+
+        @include respond-above(widescreen) {
+          padding: 20px 50px;
+        }
 
         .work-history__company__logo {
           @include experience-image();
+
+          @include respond-above(laptop) {
+            flex: 0 0 200px;
+          }
+        }
+        .work-history__company__logo__empty {
+          @include respond-above(laptop) {
+            flex: 0 0 200px;
+          }
         }
         .work-history__company__jobs {
-          flex: 0 0 calc(100% - 200px);
-          margin: 0;
+          margin-top: 16px;
+          margin-bottom: 78px;
           padding: 0;
+
+          @include respond-above(laptop) {
+            flex: 0 0 calc(100% - 200px);
+            margin: 0;
+          }
 
           .work-history__company__jobs__position {
             display: flex;
+            flex-direction: column;
             align-items: center;
             list-style: none;
-            @include section-content-padding();
+            padding: 20px 0;
 
-            .work-history__company__jobs__position__client {
-              @include experience-image();
+            @include respond-above(mobile) {
+              flex-direction: row;
             }
-            .work-history__company__jobs__position__empty {
-              flex: 0 0 200px;
+
+            @include respond-above(laptop) {
+              padding: 20px 0 20px 50px;
+            }
+
+            .work-history__company__jobs__position__main {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              width: 100%;
+              justify-content: center;
+              margin-bottom: 25px;
+
+              @include respond-above(mobile) {
+                flex: 0 0 200px;
+                width: auto;
+                flex-direction: column;
+                margin-bottom: 0;
+              }
+
+              @include respond-above(widescreen) {
+                flex: 0 0 425px;
+                flex-direction: row;
+              }
+
+            }
+            .work-history__company__jobs__position__client {
+              flex: 0 0 132px;
+              @include experience-image(132px, 68px, 6px 10px 8px 10px);
+
+              @include respond-above(smallmobile) {
+                flex: 0 0 200px;
+                padding: 8px 20px 10px 20px;
+                height: 80px;
+                max-width: 200px;
+              }
+
+              @include respond-above(mobile) {
+                flex: auto;
+              }
+
+              @include respond-above(widescreen) {
+                flex: 0 0 200px;
+              }
             }
             .work-history__company__jobs__position__title {
-              flex: 0 0 225px;
-              padding-left: 25px;
+              flex: 0 0 188px;
+
+              @include respond-above(smallmobile) {
+                flex: 0 0 200px;
+                box-sizing: border-box;
+                padding-left: 10px;
+              }
+
+              @include respond-above(mobile) {
+                flex: auto;
+                margin-top: 20px;
+                padding-left: 0;
+              }
+
+              @include respond-above(widescreen) {
+                flex: 0 0 225px;
+                margin-top: 0;
+                padding-left: 25px;
+              }
 
               .title--main {
                 @include roboto-slab('regular', 20px);
@@ -69,11 +150,19 @@
               }
             }
             .work-history__company__jobs__position__desc {
-              flex: 0 0 calc(100% - 425px);
-              padding-left: 25px;
+              flex: 0 0 calc(100% - 200px);
+              box-sizing: border-box;
               @include open-sans('regular', 18px);
               line-height: 28px;
               opacity: 0.8;
+
+              @include respond-above(mobile) {
+                padding-left: 36px;
+              }
+
+              @include respond-above(widescreen) {
+                flex: 0 0 calc(100% - 425px);
+              }
 
               .feature {
                 margin-top: 5px;

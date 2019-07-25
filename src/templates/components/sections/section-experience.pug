@@ -19,10 +19,11 @@ mixin section-experience()
           +image-background(sngularLogo, { label: 'S|ngular', classes: 'work-history__company__logo' })
           ul.work-history__company__jobs
             li.work-history__company__jobs__position
-              +image-background(bbvaLogo, { label: 'BBVA', classes: 'work-history__company__jobs__position__client' })
-              div.work-history__company__jobs__position__title
-                p.title--main Senior front-end developer
-                p.title--date 12/2018 - Today
+              div.work-history__company__jobs__position__main
+                +image-background(bbvaLogo, { label: 'BBVA', classes: 'work-history__company__jobs__position__client' })
+                div.work-history__company__jobs__position__title
+                  p.title--main Senior front-end developer
+                  p.title--date 12/2018 - Today
               div.work-history__company__jobs__position__desc Working at BBVA Mobile Channel:
                 ul.feature-list
                   li.feature Develop the three times award-winning best European banking and finances mobile app.
@@ -33,10 +34,11 @@ mixin section-experience()
           +image-background(amarisLogo, { label: 'Amaris', classes: 'work-history__company__logo' })
           ul.work-history__company__jobs
             li.work-history__company__jobs__position
-              +image-background(eciLogo, { label: 'El Corte Inglés', classes: 'work-history__company__jobs__position__client' })
-              div.work-history__company__jobs__position__title
-                p.title--main Full-stack developer
-                p.title--date 09/2018 - 12/2018
+              div.work-history__company__jobs__position__main
+                +image-background(eciLogo, { label: 'El Corte Inglés', classes: 'work-history__company__jobs__position__client' })
+                div.work-history__company__jobs__position__title
+                  p.title--main Full-stack developer
+                  p.title--date 09/2018 - 12/2018
               div.work-history__company__jobs__position__desc Working at El Corte Inglés:
                 ul.feature-list
                   li.feature Maintain and develop their multiple online shopping webs (as El Corte Inglés, Supermercado, El Club del Gourmet Hipercor and Mascotas).
@@ -44,10 +46,11 @@ mixin section-experience()
                   li.feature Work closely with UX designers to develop pixel-perfect layouts with Sass as CSS pre-processor and Adobe XD as prototyping tool.
                   li.feature Use Vue.js framework for developing back office web apps.
             li.work-history__company__jobs__position
-              +image-background(v24Logo, { label: 'Ventura 24', classes: 'work-history__company__jobs__position__client' })
-              div.work-history__company__jobs__position__title
-                p.title--main Front-end developer
-                p.title--date 05/2018 - 09/2018
+              div.work-history__company__jobs__position__main
+                +image-background(v24Logo, { label: 'Ventura 24', classes: 'work-history__company__jobs__position__client' })
+                div.work-history__company__jobs__position__title
+                  p.title--main Front-end developer
+                  p.title--date 05/2018 - 09/2018
               div.work-history__company__jobs__position__desc Working at Ventura24:
                 ul.feature-list
                   li.feature Maintain and develop new features for their modern lottery online store.
@@ -55,13 +58,14 @@ mixin section-experience()
                   li.feature Work closely with UX designers to develop pixel-perfect layouts with Sketch and Zepling as prototyping tools and LESS as CSS pre-processor.
                   li.feature Use Grunt and Babel for module bundling and code transpiling.
         li.work-history__company
-          +image-background(clubLibroLogo, { label: 'Club Internacional del Libro', classes: 'work-history__company__logo' })
+          div.work-history__company__logo__empty
           ul.work-history__company__jobs
             li.work-history__company__jobs__position
-              div.work-history__company__jobs__position__empty
-              div.work-history__company__jobs__position__title
-                p.title--main Full-stack developer
-                p.title--date 08/2017 - 05/2018
+              div.work-history__company__jobs__position__main
+                +image-background(clubLibroLogo, { label: 'Club Internacional del Libro', classes: 'work-history__company__jobs__position__client' })
+                div.work-history__company__jobs__position__title
+                  p.title--main Full-stack developer
+                  p.title--date 08/2017 - 05/2018
               div.work-history__company__jobs__position__desc Working at Club Internacional del Libro / Galería del Coleccionista:
                 ul.feature-list
                   li.feature Develop and maintain multiple marketing and business management applications.
@@ -72,10 +76,11 @@ mixin section-experience()
           +image-background(alfatecLogo, { label: 'Alfatec Sistemas', classes: 'work-history__company__logo' })
           ul.work-history__company__jobs
             li.work-history__company__jobs__position
-              +image-background(smsLogo, { label: 'Spanish National Health System', classes: 'work-history__company__jobs__position__client' })
-              div.work-history__company__jobs__position__title
-                p.title--main Full-stack developer
-                p.title--date 02/2015 - 08/2017
+              div.work-history__company__jobs__position__main
+                +image-background(smsLogo, { label: 'Spanish National Health System', classes: 'work-history__company__jobs__position__client' })
+                div.work-history__company__jobs__position__title
+                  p.title--main Full-stack developer
+                  p.title--date 02/2015 - 08/2017
               div.work-history__company__jobs__position__desc Working at Spanish National Health System:
                 ul.feature-list
                   li.feature Develop and maintain multiple e-Health web applications and SOAP services for healthcare administration.

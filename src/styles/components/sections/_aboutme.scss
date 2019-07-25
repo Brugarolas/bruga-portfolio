@@ -48,11 +48,18 @@
     .aboutme__content__image-wrapper {
       display: flex;
       width: 100%;
-      flex-flow: row;
+      flex-flow: column;
       align-items: center;
       justify-content: center;
+      text-align: center;
+
+      @include respond-above(smallmobile) {
+        flex-flow: row;
+        text-align: left;
+      }
 
       .aboutme__content__image {
+        flex: 0 0 120px;
         width: 120px;
         height: 120px;
         border: 2px solid #fff;
@@ -114,7 +121,7 @@
           display: inline-block;
           width: 132px;
           padding: 8px 8px 8px 32px;
-          margin: 8px;
+          margin: 6px;
           box-sizing: border-box;
           text-align: center;
           background-color: lighten(#191a28, 10%);
@@ -133,6 +140,7 @@
           @include respond-above(mobile) {
             width: 158px;
             padding: 10px 8px 10px 36px;
+            margin: 6px;
             font-size: 18px;
 
             .aboutme__content__icon {
