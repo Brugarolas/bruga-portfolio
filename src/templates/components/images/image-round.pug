@@ -1,6 +1,3 @@
-mixin image-round(src, alt, extraClasses)
-  img.image-round(
-    src=src
-    alt=alt
-    class=extraClasses
-  )
+mixin image-round(src, data = {})
+  - data.classes = (data.classes ? data.classes + ' ' : '') + 'image-round'
+  +image-background(src, data)

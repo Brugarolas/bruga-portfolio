@@ -1,7 +1,7 @@
 mixin section-main(backgroundPicture, name, links)
   main.main.page.page--current(data-page=1)
     div.main__background
-      +image-background(backgroundPicture, 'main__background-image')
+      +image-background(backgroundPicture, { classes: 'main__background-image' })
 
     header.main__top
       div.main__top__icons

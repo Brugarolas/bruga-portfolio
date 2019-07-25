@@ -1,5 +1,6 @@
-mixin image-background(src, extraClasses)
+mixin image-background(src, data = {})
   div.image-background(
     data-image=src
-    class=extraClasses
+    aria-label=data.label
+    class=data.classes
   )

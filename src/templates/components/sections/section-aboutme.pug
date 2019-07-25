@@ -7,7 +7,7 @@ mixin section-aboutme(name, personalPhoto)
     div.aboutme__content
       div.aboutme__content__section
         div.aboutme__content__image-wrapper
-          +image-round(personalPhoto, 'Personal Picture', 'aboutme__content__image')
+          +image-round(personalPhoto, { label: 'Personal Picture', classes: 'aboutme__content__image' })
           div.aboutme__content__wrapper
             p.aboutme__content__name= name
             p.aboutme__content__location
