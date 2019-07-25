@@ -4,6 +4,7 @@ import subscriptions from '../utils/subscription.js';
 
 const TRANSITION_DURATION = 705;
 const ACTIVE_CLASS = 'page--current';
+const HIDDEN_CLASS = 'page--hidden';
 const ACTIVE_LINK_CLASS = 'link-local--selected';
 
 const calcPageTransition = (from, to) => {
@@ -18,9 +19,19 @@ const calcPageTransition = (from, to) => {
 }
 
 const doPageTransition = async (actualPage, nextPage, pageTransition) => {
-  await subscriptions.emit('page-transition-start', { actual: actualPage, next: nextPage });
+  const endTransition = () => {
+    requestAnimationFrame(() => {
+      actualPage.classList.remove(pageTransition.fromClass);
+      actualPage.classList.remove(ACTIVE_CLASS);
+      nextPage.classList.remove(pageTransition.toClass);
 
-  requestAnimationFrame(() => {
+      actualPage.classList.add(HIDDEN_CLASS);
+
+      subscriptions.emit('page-transition-end', { prev: actualPage, actual: nextPage });
+    });
+  };
+
+  const startTransition = () => {
     actualPage.classList.add(pageTransition.fromClass);
     nextPage.classList.add(pageTransition.toClass);
     nextPage.classList.add(ACTIVE_CLASS);
@@ -32,16 +43,14 @@ const doPageTransition = async (actualPage, nextPage, pageTransition) => {
       element.classList.add(ACTIVE_LINK_CLASS);
     });
 
-    setTimeout(() => {
-      requestAnimationFrame(() => {
-        actualPage.classList.remove(pageTransition.fromClass);
-        actualPage.classList.remove(ACTIVE_CLASS);
-        nextPage.classList.remove(pageTransition.toClass);
+    setTimeout(endTransition, TRANSITION_DURATION);
+  };
 
-        subscriptions.emit('page-transition-end', { prev: actualPage, actual: nextPage });
-      });
-    }, TRANSITION_DURATION);
-  });
+  await subscriptions.emit('page-transition-start', { actual: actualPage, next: nextPage });
+
+  nextPage.classList.remove(HIDDEN_CLASS);
+
+  requestAnimationFrame(startTransition);
 };
 
 const initPageTransitionButtons = (selector = '[data-transition-to]') => {

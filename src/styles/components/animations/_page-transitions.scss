@@ -20,6 +20,10 @@
     transform: translate3d(0, 0, 0);
     transform-style: preserve-3d;
 
+    &.page--hidden {
+      display: none;
+    }
+
     &.page--current {
       visibility: visible;
       z-index: 1;

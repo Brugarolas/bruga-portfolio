@@ -8,7 +8,7 @@
 - var smsLogo = require('@/images/sms-logo.svg')
 
 mixin section-experience()
-  section.experience.page(data-page=3)
+  section.experience.page.page--hidden(data-page=3)
     +header-navbar()
 
     header.experience__header Work History
@@ -42,7 +42,7 @@ mixin section-experience()
               div.work-history__company__jobs__position__desc Working at El Corte Inglés:
                 ul.feature-list
                   li.feature Maintain and develop their multiple online shopping webs (as El Corte Inglés, Supermercado, El Club del Gourmet Hipercor and Mascotas).
-                  li.feature Work with Node and native JavaScript, Express library and Dust.js as template engine.
+                  li.feature Work with Node and native JavaScript, Express library and Dust.js as template engine. Some parts with React.
                   li.feature Work closely with UX designers to develop pixel-perfect layouts with Sass as CSS pre-processor and Adobe XD as prototyping tool.
                   li.feature Use Vue.js framework for developing back office web apps.
             li.work-history__company__jobs__position
