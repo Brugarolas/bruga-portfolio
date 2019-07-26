@@ -88,11 +88,11 @@ const initTypewriter = (selector = `${PAGE_SELECTOR} ${BASE_SELECTOR}`) => {
   /* On start and page change */
   document.querySelectorAll(selector).forEach(startTypewriter);
 
-  subscriptions.on('page-transition-start', ({ next }) => {
-    next.querySelectorAll(BASE_SELECTOR).forEach(startTypewriter);
+  subscriptions.on('page-transition-start', ({ actual }) => {
+    actual.querySelectorAll(BASE_SELECTOR).forEach(stopTypewriter);
   });
-  subscriptions.on('page-transition-end', ({ prev }) => {
-    prev.querySelectorAll(BASE_SELECTOR).forEach(stopTypewriter);
+  subscriptions.on('page-transition-end', ({ actual }) => {
+    actual.querySelectorAll(BASE_SELECTOR).forEach(startTypewriter);
   });
 };
 
