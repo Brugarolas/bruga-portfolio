@@ -80,6 +80,7 @@ module.exports = {
       title: 'Andrés Brugarolas',
       template: "./src/index.pug",
       filename: "./index.html",
+      favicon: './src/images/favicon_simple.png',
       inject: true
     }),
     new MiniCssExtractPlugin({
