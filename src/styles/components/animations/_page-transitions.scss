@@ -18,6 +18,7 @@
     overflow: hidden;
     backface-visibility: hidden;
     transform: translate3d(0, 0, 0);
+    will-change: transform;
     transform-style: preserve-3d;
 
     &.page--hidden {

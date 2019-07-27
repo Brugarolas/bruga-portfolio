@@ -12,8 +12,12 @@
     pointer-events: none;
 
     .main__background-image {
-      filter: blur(5px) contrast(120%) brightness(25%);
+      filter: blur(5px) contrast(120%) brightness(50%);
       transform: scale(1.05);
+
+      @include respond-above(tablet) {
+        filter: blur(5px) contrast(120%) brightness(25%);
+      }
     }
   }
 
