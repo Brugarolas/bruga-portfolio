@@ -1,4 +1,4 @@
-import addOnClick from '../utils/add-on-click.js';
+import addEventListener from '../utils/event-listener.js';
 import requestAnimationFrame from '../utils/raf.js';
 import subscriptions from '../utils/subscription.js';
 
@@ -23,7 +23,7 @@ const initFloatingNavbar = (selector = '.floating-navbar') => {
   const navbarBackground = navbar.querySelector(`${selector}__background`);
 
   // On click open and close
-  addOnClick(navbarButton, () => {
+  addEventListener(navbarButton, 'click', () => {
     const elementScale = navbar.classList.contains(ACTIVE_MENU_CLASS) ? 1 : calcElementScale(navbarBackground);
 
     requestAnimationFrame(() => {

@@ -20,6 +20,7 @@
     transform: translate3d(0, 0, 0);
     will-change: transform;
     transform-style: preserve-3d;
+    overscroll-behavior: contain; // https://stackoverflow.com/questions/29008194/disabling-androids-chrome-pull-down-to-refresh-feature
 
     &.page--hidden {
       display: none;

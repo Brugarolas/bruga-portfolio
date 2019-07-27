@@ -6,6 +6,7 @@
 @import 'components';
 
 :root, html, body {
+  overscroll-behavior: contain; // https://stackoverflow.com/questions/29008194/disabling-androids-chrome-pull-down-to-refresh-feature
   height: 100%;
   min-height: 100%;
   margin: 0;

@@ -1,6 +1,7 @@
+import addEventListener from '../utils/event-listener.js';
 import requestAnimationFrame from '../utils/raf.js';
-import addOnClick from '../utils/add-on-click.js'
 import subscriptions from '../utils/subscription.js';
+import swipeDetect, { DIRECTIONS } from '../utils/swipe.js';
 
 const TRANSITION_DURATION = 705;
 const ACTIVE_CLASS = 'page--current';
@@ -34,6 +35,7 @@ const doPageTransition = async (actualPage, nextPage, pageTransition) => {
 
   const endTransition = () => {
     requestAnimationFrame(() => {
+      actualPage.scrollToTop();
       actualPage.classList.remove(pageTransition.fromClass);
       actualPage.classList.remove(ACTIVE_CLASS);
       nextPage.classList.remove(pageTransition.toClass);
@@ -87,9 +89,10 @@ const initPageTransitionButtons = (selector = '[data-transition-to]') => {
 
   const scrollHasEnded = (element, checkTop = false) => {
     if (checkTop) {
-      return element.scrollTop <= 0;
+      return element.scrollIsOnTop;
+    } else {
+      return element.scrollIsOnBottom;
     }
-    return element.scrollTop >= element.scrollTopMax;
   };
 
   /* Local links bindings */
@@ -101,7 +104,7 @@ const initPageTransitionButtons = (selector = '[data-transition-to]') => {
       return;
     }
 
-    addOnClick(element, function() {
+    addEventListener(element, 'click', function() {
       const actualPage = getActualPage();
       const actualPageId = actualPage && actualPage.getAttribute('data-page');
 
@@ -110,9 +113,8 @@ const initPageTransitionButtons = (selector = '[data-transition-to]') => {
   });
 
   /* Key bindings */
-  const goPrevPage = (backwards = false, checkScroll = false) => {
+  const goAdjacentPage = (backwards = false, checkScroll = true) => {
     const actualPage = getActualPage();
-
     if (checkScroll && !scrollHasEnded(actualPage, backwards)) {
       return;
     }
@@ -124,13 +126,24 @@ const initPageTransitionButtons = (selector = '[data-transition-to]') => {
     transition(actualPage, actualPageId, nextPage, nextPageId);
   };
 
-  window.addEventListener('keydown', function({ keyCode }) {
+  addEventListener(window, 'keydown', function({ keyCode }) {
     if (keyCode === KEYS.DOWN || keyCode === KEYS.ENTER || keyCode === KEYS.SPACE) {
-      return goPrevPage(false, keyCode === KEYS.DOWN);
+      return goAdjacentPage(false, keyCode === KEYS.DOWN);
     }
     if (keyCode === KEYS.UP || keyCode === KEYS.DELETE || keyCode === KEYS.ESC) {
-      return goPrevPage(true, keyCode === KEYS.UP);
+      return goAdjacentPage(true, keyCode === KEYS.UP);
     }
+  });
+
+  /* Swipe bindings */
+  const swipes = swipeDetect(document, { emitter: subscriptions });
+
+  swipes.on(DIRECTIONS.UP, (event) => {
+    goAdjacentPage(false);
+  });
+
+  swipes.on(DIRECTIONS.DOWN, (event) => {
+    goAdjacentPage(true);
   });
 };
 

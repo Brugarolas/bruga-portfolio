@@ -75,7 +75,6 @@ $line-color: #07080a;
     opacity: 0;
     transform: translateX(100%);
     transition: opacity 0.3s ease-in-out, transform 0.8s ease-in-out;
-    will-change: opacity, transform;
     pointer-events: none;
     z-index: 7;
 
