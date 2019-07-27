@@ -71,7 +71,9 @@ const initTypewriter = (selector = `${PAGE_SELECTOR} ${BASE_SELECTOR}`) => {
     }
 
     if (typewriters[id]) {
-      typewriters[id].start();
+      if (typewriters[id].state.lastFrameTime) { // Has started
+        typewriters[id].start();
+      }
     } else {
       typewriters[id] = createTypewriter(element);
     }

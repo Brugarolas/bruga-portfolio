@@ -83,10 +83,14 @@ $line-color: #07080a;
     justify-content: center;
 
     .floating-navbar__content__link {
-      @include open-sans('semibold', 32px);
+      @include roboto-slab('bold', 32px);
       margin-right: 0;
       margin-bottom: 20px;
       opacity: 1;
+
+      &.link-local--selected {
+        margin-bottom: 24px;
+      }
     }
   }
 
