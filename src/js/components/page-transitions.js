@@ -41,6 +41,7 @@ const doPageTransition = async (actualPage, nextPage, pageTransition) => {
       actualPage.classList.add(HIDDEN_CLASS);
 
       subscriptions.emit('page-transition-end', { prev: actualPage, actual: nextPage });
+      nextPage.focus();
       pageTransitioning = false;
     });
   };
@@ -84,6 +85,13 @@ const initPageTransitionButtons = (selector = '[data-transition-to]') => {
     doPageTransition(actualPage, nextPage, pageTransition);
   };
 
+  const scrollHasEnded = (element, checkTop = false) => {
+    if (checkTop) {
+      return element.scrollTop <= 0;
+    }
+    return element.scrollTop >= element.scrollTopMax;
+  };
+
   /* Local links bindings */
   document.querySelectorAll(selector).forEach(element => {
     const nextPageId = element.getAttribute('data-transition-to');
@@ -102,8 +110,13 @@ const initPageTransitionButtons = (selector = '[data-transition-to]') => {
   });
 
   /* Key bindings */
-  const goPrevPage = (backwards = false) => {
+  const goPrevPage = (backwards = false, checkScroll = false) => {
     const actualPage = getActualPage();
+
+    if (checkScroll && !scrollHasEnded(actualPage, backwards)) {
+      return;
+    }
+
     const actualPageId = actualPage.getAttribute('data-page');
     const nextPageId = actualPageId - (backwards ? 1 : -1);
     const nextPage = document.querySelector(`.page[data-page="${nextPageId}"]`);
@@ -113,10 +126,10 @@ const initPageTransitionButtons = (selector = '[data-transition-to]') => {
 
   window.addEventListener('keydown', function({ keyCode }) {
     if (keyCode === KEYS.DOWN || keyCode === KEYS.ENTER || keyCode === KEYS.SPACE) {
-      return goPrevPage(false);
+      return goPrevPage(false, keyCode === KEYS.DOWN);
     }
     if (keyCode === KEYS.UP || keyCode === KEYS.DELETE || keyCode === KEYS.ESC) {
-      return goPrevPage(true);
+      return goPrevPage(true, keyCode === KEYS.UP);
     }
   });
 };
