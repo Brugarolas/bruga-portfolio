@@ -1,0 +1,10 @@
+mixin section-projects(page)
+  section.projects.page.page--hidden(data-page=page)
+    +header-navbar()
+
+    header.projects__header Personal Projects
+    
+    div.projects__content
+    
+    div.projects__bottom
+      +link-local-icon(page + 1, 'link-icon--local fas fa-chevron-down')

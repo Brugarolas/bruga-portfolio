@@ -1,0 +1,21 @@
+.projects {
+  background-color: #142142;
+  @include global-content-padding();
+
+  .projects__header {
+    @include text-header();
+  }
+
+  .projects__content {
+    width: 100%;
+    min-height: calc(100% - 200px);
+  }
+
+  .projects__bottom {
+    display: block;
+    width: 100%;
+    padding: 0 40px 24px 40px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+}

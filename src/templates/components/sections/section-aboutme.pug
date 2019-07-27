@@ -1,5 +1,5 @@
-mixin section-aboutme(name, personalPhoto)
-  section.aboutme.page.page--hidden(data-page=2)
+mixin section-aboutme(name, personalPhoto, page)
+  section.aboutme.page.page--hidden(data-page=page)
     +header-navbar()
 
     header.aboutme__header About Me
@@ -57,4 +57,4 @@ mixin section-aboutme(name, personalPhoto)
             span.aboutme__content__skill #[i.aboutme__content__icon.icon-jenkins.fab.fa-jenkins] Jenkins
 
     div.aboutme__bottom
-      +link-local-icon(3, 'link-icon--local fas fa-chevron-down')
+      +link-local-icon(page + 1, 'link-icon--local fas fa-chevron-down')

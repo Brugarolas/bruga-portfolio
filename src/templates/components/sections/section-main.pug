@@ -1,5 +1,5 @@
-mixin section-main(backgroundPicture, name, links)
-  main.main.page.page--current(data-page=1)
+mixin section-main(backgroundPicture, name, links, page)
+  main.main.page.page--current(data-page=page)
     div.main__background
       +image-background(backgroundPicture, { classes: 'main__background-image' })
 
@@ -15,4 +15,4 @@ mixin section-main(backgroundPicture, name, links)
         +typewriter({text: ['Passion for programming <i class="heart fas fa-heart"></i>', 'Clean code enthusiast', 'Exceptional user experience', 'Responsive & pixel-perfect layouts', 'Advanced problem-solving skills'], loop: 'true', waitFor: 'title'}, 'subtitle')
 
     div.main__bottom
-      +link-local-icon(2, 'link-icon--local fas fa-chevron-down')
+      +link-local-icon(page + 1, 'link-icon--local fas fa-chevron-down')

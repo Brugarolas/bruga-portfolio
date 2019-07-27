@@ -7,6 +7,7 @@
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "start:local": "cross-env NODE_ENV=development webpack-dev-server --open --hot --host 0.0.0.0",
     "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
     "gh-pages": "cross-env NODE_ENV=production PUBLIC_PATH=bruga-music webpack -p --progress --hide-modules"
   },
