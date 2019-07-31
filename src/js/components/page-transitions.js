@@ -137,13 +137,20 @@ const initPageTransitionButtons = (selector = '[data-transition-to]') => {
 
   /* Swipe bindings */
   const swipes = swipeDetect(document, { emitter: subscriptions });
+  const floatingMenuIsClosed = () => {
+    return !document.querySelector('.floating-navbar.floating-navbar--open');
+  };
 
   swipes.on(DIRECTIONS.UP, (event) => {
-    goAdjacentPage(false);
+    if (floatingMenuIsClosed()) {
+      goAdjacentPage(false);
+    }
   });
 
   swipes.on(DIRECTIONS.DOWN, (event) => {
-    goAdjacentPage(true);
+    if (floatingMenuIsClosed()) {
+      goAdjacentPage(true);
+    }
   });
 };
 

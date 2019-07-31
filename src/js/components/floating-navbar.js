@@ -3,11 +3,35 @@ import requestAnimationFrame from '../utils/raf.js';
 import subscriptions from '../utils/subscription.js';
 
 const ACTIVE_MENU_CLASS = 'floating-navbar--open';
-const CLOSE_MENU_DURATION = 800;
+const OPEN_CLOSE_MENU_DURATION = 800;
+
+/* Debounce function (without context binding, be careful!)*/
+const debounce = (callback, wait = 50, immediate = false) => {
+	let timeout;
+
+	return function() {
+    const callNow = immediate && !timeout;
+    const next = () => callback.apply(this, arguments);
+
+    clearTimeout(timeout);
+    timeout = setTimeout(next, wait);
+
+    if (callNow) next();
+	};
+};
+
+/* Aux functions */
+const getBoundingClientRectWithCache = (element) => {
+  if (!element.boundingClientRectCache) {
+    element.boundingClientRectCache = element.getBoundingClientRect();
+  }
+  return element.boundingClientRectCache;
+};
 
 const calcElementScale = (element) => {
-  const elementInfo = element.getBoundingClientRect();
-  const { width, height } = document.body.getBoundingClientRect();
+  const elementInfo = getBoundingClientRectWithCache(element);
+  const height = window.outerHeight;
+  const width = window.outerWidth;
 
   const necessaryWidth = width - (elementInfo.top + elementInfo.width / 2);
   const necessaryHeight = height - (elementInfo.top + elementInfo.width / 2);
@@ -45,11 +69,21 @@ const initFloatingNavbar = (selector = '.floating-navbar') => {
 
         setTimeout(() => {
           resolve(true);
-        }, CLOSE_MENU_DURATION / 2);
+        }, OPEN_CLOSE_MENU_DURATION / 2);
       });
     });
   });
-  // !end
+
+  // Change background size on resize
+  addEventListener(window, 'resize', debounce((event) => {
+    if (navbar.classList.contains(ACTIVE_MENU_CLASS)) {
+      requestAnimationFrame(() => {
+        const elementScale = calcElementScale(navbarBackground);
+
+        navbarBackground.style.transform = `scale3d(${elementScale}, ${elementScale}, 1)`;
+      });
+    }
+  }, 100, false));
 };
 
 export default initFloatingNavbar;
