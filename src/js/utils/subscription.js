@@ -38,7 +38,7 @@ export class Subscription {
     return true;
   }
 
-  emit(name, params) {
+  emit(name, params, delay = 0) {
     const eventSubscriptions = this.subscriptions.get(name);
 
     if (!eventSubscriptions) {
@@ -63,7 +63,7 @@ export class Subscription {
         }).catch(error => {
           reject(error);
         });
-      });
+      }, delay);
     });
   }
 }

@@ -1,24 +1,10 @@
 import addEventListener from '../utils/event-listener.js';
 import requestAnimationFrame from '../utils/raf.js';
+import debounce from '../utils/debounce.js';
 import subscriptions from '../utils/subscription.js';
 
 const ACTIVE_MENU_CLASS = 'floating-navbar--open';
 const OPEN_CLOSE_MENU_DURATION = 800;
-
-/* Debounce function (without context binding, be careful!)*/
-const debounce = (callback, wait = 50, immediate = false) => {
-	let timeout;
-
-	return function() {
-    const callNow = immediate && !timeout;
-    const next = () => callback.apply(this, arguments);
-
-    clearTimeout(timeout);
-    timeout = setTimeout(next, wait);
-
-    if (callNow) next();
-	};
-};
 
 /* Aux functions */
 const getBoundingClientRectWithCache = (element) => {
@@ -41,6 +27,7 @@ const calcElementScale = (element) => {
   return Math.ceil(2 * hypotenuse / elementInfo.width);
 };
 
+/* Init floating menu function */
 const initFloatingNavbar = (selector = '.floating-navbar') => {
   const navbar = document.querySelector(selector);
   const navbarButton = navbar.querySelector(`${selector}__button`);
@@ -48,7 +35,8 @@ const initFloatingNavbar = (selector = '.floating-navbar') => {
 
   // On click open and close
   addEventListener(navbarButton, 'click', () => {
-    const elementScale = navbar.classList.contains(ACTIVE_MENU_CLASS) ? 1 : calcElementScale(navbarBackground);
+    const menuIsOpen = navbar.classList.contains(ACTIVE_MENU_CLASS);
+    const elementScale = menuIsOpen ? 1 : calcElementScale(navbarBackground);
 
     requestAnimationFrame(() => {
       navbar.classList.toggle(ACTIVE_MENU_CLASS);

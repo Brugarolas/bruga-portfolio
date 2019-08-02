@@ -53,6 +53,10 @@
   }
 }
 
+.floating-navbar.floating-navbar--open ~ .page.page--current {
+  overflow-y: hidden;
+}
+
 @-webkit-keyframes moveToTop {
 	from { }
 	to { -webkit-transform: translate3d(0, -100%, 0); }
