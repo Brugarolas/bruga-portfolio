@@ -4,6 +4,7 @@
   opacity: 0.80;
   cursor: pointer;
   text-decoration: none;
+  @include disable-user-select();
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 
   &:not(:last-child) {

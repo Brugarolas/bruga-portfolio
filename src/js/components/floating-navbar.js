@@ -1,7 +1,7 @@
 import addEventListener from '../utils/event-listener.js';
 import requestAnimationFrame from '../utils/raf.js';
-import debounce from '../utils/debounce.js';
 import subscriptions from '../utils/subscription.js';
+import onResize from '../utils/on-resize.js';
 
 const ACTIVE_MENU_CLASS = 'floating-navbar--open';
 const OPEN_CLOSE_MENU_DURATION = 800;
@@ -63,7 +63,7 @@ const initFloatingNavbar = (selector = '.floating-navbar') => {
   });
 
   // Change background size on resize
-  addEventListener(window, 'resize', debounce((event) => {
+  onResize(() => {
     if (navbar.classList.contains(ACTIVE_MENU_CLASS)) {
       requestAnimationFrame(() => {
         const elementScale = calcElementScale(navbarBackground);
@@ -71,7 +71,7 @@ const initFloatingNavbar = (selector = '.floating-navbar') => {
         navbarBackground.style.transform = `scale3d(${elementScale}, ${elementScale}, 1)`;
       });
     }
-  }, 100, false));
+  });
 };
 
 export default initFloatingNavbar;

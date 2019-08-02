@@ -6,11 +6,11 @@ $fa-font-path: '../../node_modules/@fortawesome/fontawesome-free/webfonts';
 
 @mixin skill-icon-correction {
   font-size: 22px !important;
-  top: 9px !important;
+  top: 5px !important;
 
   @include respond-above(mobile) {
     font-size: 24px !important;
-    top: 10px !important;
+    top: 7px !important;
   }
 }
 

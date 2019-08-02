@@ -60,3 +60,12 @@
     padding: 20px 50px;
   }
 }
+
+@mixin disable-user-select {
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  /* -kthml-user-select: none; // Konkeror */
+  -moz-user-select: none;
+  -webkit-touch-callout: none; // Safair iOS
+  user-select: none;
+}

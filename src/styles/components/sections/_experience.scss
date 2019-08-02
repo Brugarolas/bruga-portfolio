@@ -98,7 +98,6 @@
 
             }
             .work-history__company__jobs__position__client {
-              flex: 0 0 132px;
               @include experience-image(132px, 68px, 6px 10px 8px 10px);
 
               @include respond-above(smallmobile) {
@@ -117,12 +116,11 @@
               }
             }
             .work-history__company__jobs__position__title {
-              flex: 0 0 188px;
+              padding-left: 10px;
+              box-sizing: border-box;
 
               @include respond-above(smallmobile) {
                 flex: 0 0 200px;
-                box-sizing: border-box;
-                padding-left: 10px;
               }
 
               @include respond-above(mobile) {
