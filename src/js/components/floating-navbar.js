@@ -16,8 +16,8 @@ const getBoundingClientRectWithCache = (element) => {
 
 const calcElementScale = (element) => {
   const elementInfo = getBoundingClientRectWithCache(element);
-  const height = window.outerHeight;
-  const width = window.outerWidth;
+  const height = window.innerHeight;
+  const width = window.innerWidth;
 
   const necessaryWidth = width - (elementInfo.top + elementInfo.width / 2);
   const necessaryHeight = height - (elementInfo.top + elementInfo.width / 2);
