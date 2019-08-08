@@ -2,8 +2,10 @@ import addEventListener from '../utils/event-listener.js';
 import requestAnimationFrame from '../utils/raf.js';
 import subscriptions from '../utils/subscription.js';
 import swipeDetect, { DIRECTIONS } from '../utils/swipe.js';
+import copyStyle from '../utils/copy-css.js';
 
 const TRANSITION_DURATION = 705;
+const WRAPPER_CLASS = 'page-wrapper';
 const ACTIVE_CLASS = 'page--current';
 const HIDDEN_CLASS = 'page--hidden';
 const ACTIVE_LINK_CLASS = 'link-local--selected';
@@ -15,9 +17,19 @@ const KEYS = {
   SPACE: 32,
   ESC: 27
 };
+
 let pageTransitioning = false;
+let wrapper;
 
 /* Aux: calc page transition classes */
+const getPageWrapper = () => {
+  if (!wrapper) {
+    wrapper = document.querySelector(`.${WRAPPER_CLASS}`);
+  }
+
+  return wrapper;
+};
+
 const calcPageTransition = (from, to) => {
   const prevLinks = document.querySelectorAll(`.${ACTIVE_LINK_CLASS}`);
   const nextLinks = document.querySelectorAll(`.link-local[data-transition-to="${to}"]`)
@@ -32,6 +44,7 @@ const calcPageTransition = (from, to) => {
 /* Aux: actually do page transition */
 const doPageTransition = async (actualPage, nextPage, pageTransition) => {
   pageTransitioning = true;
+  const pageWrapper = getPageWrapper();
 
   const endTransition = () => {
     requestAnimationFrame(() => {
@@ -45,6 +58,8 @@ const doPageTransition = async (actualPage, nextPage, pageTransition) => {
       subscriptions.emit('page-transition-end', { prev: actualPage, actual: nextPage });
       nextPage.focus();
       pageTransitioning = false;
+
+      copyStyle(nextPage, pageWrapper, 'background-color');
     });
   };
 
