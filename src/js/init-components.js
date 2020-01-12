@@ -3,6 +3,7 @@ import imageBackground from './components/image-background.js';
 import typewriter from './components/typewriter.js';
 import pageTransitions from './components/page-transitions.js';
 import floatingNavbar from './components/floating-navbar.js';
+import projectCards from './components/project-cards.js';
 
 const initComponents = () => {
   requestAnimationFrame(() => {
@@ -13,6 +14,7 @@ const initComponents = () => {
     typewriter();
     pageTransitions();
     floatingNavbar();
+    projectCards();
   }, 50);
 };
 

@@ -1,0 +1,16 @@
+mixin project-card(data)
+  article.card
+    div.card__side.card__side--front
+      div.card__cont
+        h3.card__title(class=data.lightBackground ? 'card__title--light' : '')= data.title
+        +image-background(data.picture, { classes: 'card__picture' })
+    div.card__side.card__side--back
+      div.card__cta
+        div.card__links
+          +link-icon(data.github, 'fab fa-github')
+        h3.card__title= data.title
+        p.card__text= data.descr
+        p.card__text
+          each feature in data.features
+            span.card__feature= feature
+        a.card__button(href=data.link target='_blank') Try it!

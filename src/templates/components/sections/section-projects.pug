@@ -1,3 +1,25 @@
+- var brugaMusicPicture = require('@/images/bruga-music.jpg');
+- var brugaWeatherPicture = require('@/images/bruga-weather-r.png');
+
+- var brugaMusicData = {
+-   title: 'Bruga Music',
+-   picture: brugaMusicPicture,
+-   descr: 'Streaming music app made with LastFM API and YouTube Player',
+-   github: 'https://github.com/Brugarolas/bruga-music',
+-   link: 'https://brugarolas.github.io/bruga-music/',
+-   features: ['Vue', 'Vuex', 'Vue Router', 'Webpack', 'Less']
+- };
+
+- var brugaWeatherData = {
+-   title: 'Bruga Weather',
+-   picture: brugaWeatherPicture,
+-   descr: 'Streaming music app made with OpenWeather API',
+-   github: 'https://github.com/Brugarolas/bruga-weather',
+-   link: 'https://brugarolas.github.io/bruga-weather/',
+-   features: ['React', 'Redux', 'Immer', 'Webpack', 'Less'],
+-   lightBackground: true
+- };
+
 mixin section-projects(page)
   section.projects.page.page--hidden(data-page=page)
     +header-navbar()
@@ -5,6 +27,8 @@ mixin section-projects(page)
     header.projects__header Personal Projects
     
     div.projects__content
+      +project-card(brugaMusicData)
+      +project-card(brugaWeatherData)
     
     div.projects__bottom
       +link-local-icon(page + 1, 'link-icon--local fas fa-chevron-down')

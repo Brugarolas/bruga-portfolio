@@ -1,6 +1,7 @@
 mixin image-background(src, data = {})
   div.image-background(
     data-image=src
-    aria-label=data.label
+    aria-label=data.label ? data.label : false
+    aria-hidden=data.label ? false : "true"
     class=data.classes
   )
