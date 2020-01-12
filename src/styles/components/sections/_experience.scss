@@ -33,6 +33,7 @@
 
         @include respond-above(laptop) {
           flex-direction: row;
+          padding: 10px 0;
         }
 
         @include respond-above(widescreen) {
@@ -73,7 +74,17 @@
             }
 
             @include respond-above(laptop) {
-              padding: 20px 0 20px 50px;
+              padding: 0 0 0 24px;
+              margin: 20px 0 40px 24px;
+
+              border-left: 2px solid #fff1;
+              border-radius: 2px;
+
+              &.position--final-company {
+                padding: 20px 0 20px 50px;
+                margin: 0;
+                border-left: none;
+              }
             }
 
             .work-history__company__jobs__position__main {

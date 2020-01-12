@@ -27,9 +27,10 @@ mixin section-experience(page)
               div.work-history__company__jobs__position__desc Working at BBVA Mobile Channel:
                 ul.feature-list
                   li.feature Develop the three times award-winning best European banking and finances mobile app.
-                  li.feature Work closely with UX designers to offer the best user experience possible, including accessibility features.
-                  li.feature Use Ember as framework, LitElement for web components and Sass for CSS pre-processing.
-                  li.feature Integration and unit testing with QUnit, Web Driver and Cucumber.
+                  li.feature Utilized a Design System and Gallery.io for sharing design specifications. Work closely with UX designers to offer the best user experience possible, including accessibility features. 
+                  li.feature Use Ember as framework, LitElement/LitHTML for web components and Sass for CSS pre-processing.
+                  li.feature Integration and unit testing with Cucumber, Web Driver and QUnit.
+                  li.feature Develop and maintain some Amazon Lambda microservices with Node.js, and tested them with Mocha.
         li.work-history__company
           +image-background(amarisLogo, { label: 'Amaris', classes: 'work-history__company__logo' })
           ul.work-history__company__jobs
@@ -42,8 +43,8 @@ mixin section-experience(page)
               div.work-history__company__jobs__position__desc Working at El Corte Inglés:
                 ul.feature-list
                   li.feature Maintain and develop their multiple online shopping webs (as El Corte Inglés, Supermercado, El Club del Gourmet Hipercor and Mascotas).
-                  li.feature Work with Node and native JavaScript, Express library and Dust.js as template engine. Some parts with React.
-                  li.feature Work closely with UX designers to develop pixel-perfect layouts with Sass as CSS pre-processor and Adobe XD as prototyping tool.
+                  li.feature Work with Node and native JavaScript, Express library and Dust.js as template engine. Some experimental modules with Vue and React.
+                  li.feature Responsive and pixel-perfect layouts with Sass as CSS pre-processor and Adobe XD as prototyping tool.
                   li.feature Use Vue.js framework for developing back office web apps.
             li.work-history__company__jobs__position
               div.work-history__company__jobs__position__main
@@ -60,7 +61,7 @@ mixin section-experience(page)
         li.work-history__company
           div.work-history__company__logo__empty
           ul.work-history__company__jobs
-            li.work-history__company__jobs__position
+            li.work-history__company__jobs__position.position--final-company
               div.work-history__company__jobs__position__main
                 +image-background(clubLibroLogo, { label: 'Club Internacional del Libro', classes: 'work-history__company__jobs__position__client' })
                 div.work-history__company__jobs__position__title
