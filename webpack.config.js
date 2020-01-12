@@ -64,7 +64,8 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]',
-          outputPath: 'img'
+          outputPath: 'img',
+          esModule: false
         }
       },
       {
@@ -72,7 +73,8 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]',
-          outputPath: 'fonts'
+          outputPath: 'fonts',
+          esModule: false
         }
       }
     ]
