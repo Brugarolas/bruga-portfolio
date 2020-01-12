@@ -8,7 +8,8 @@
 
   .projects__content {
     width: 100%;
-    min-height: calc(100% - 200px);
+    // min-height: calc(100% - 200px); // work in progress
+    min-height: calc(100% - 300px);
 
     display: flex;
     align-items: center;

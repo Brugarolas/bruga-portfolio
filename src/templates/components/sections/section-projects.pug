@@ -26,6 +26,9 @@ mixin section-projects(page)
 
     header.projects__header Personal Projects
     
+    div.work_in_progress
+      p.work_in_progress__text #[i.fas.fa-exclamation-triangle.work_in_progress__icon] Work in Progress!
+    
     div.projects__content
       +project-card(brugaMusicData)
       +project-card(brugaWeatherData)

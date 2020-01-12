@@ -1,0 +1,18 @@
+.work_in_progress {
+  text-align: center;
+
+  .work_in_progress__text {
+    display: inline-block;
+    @include open-sans('regular', 20px);
+    text-align: center;
+    color: #ff9307;
+    border: 1px dashed #ff9307;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+
+  .work_in_progress__icon {
+    color: #ffc107;
+    margin-right: 10px;
+  }
+}
