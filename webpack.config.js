@@ -21,7 +21,6 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          isProduction ? 'style-loader' : 'css-hot-loader',
           MiniCssExtractPlugin.loader,
           'css-loader'
         ]
@@ -29,7 +28,6 @@ module.exports = {
       {
         test: /\.(scss|sass)$/,
         use: [
-          { loader: isProduction ? 'style-loader' : 'css-hot-loader' },
           { loader: MiniCssExtractPlugin.loader },
           { loader: 'css-loader' },
           {
@@ -85,6 +83,9 @@ module.exports = {
       template: "./src/index.pug",
       filename: "./index.html",
       favicon: './src/images/favicon_simple.png',
+      meta: {
+        viewport: 'width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no'
+      },
       inject: true
     }),
     new MiniCssExtractPlugin({
@@ -93,7 +94,6 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
       '@': path.resolve(__dirname, './src')
     },
     extensions: ['*', '.js', '.vue', '.json']
@@ -104,6 +104,10 @@ module.exports = {
 if (isProduction) {
   module.exports.devtool = '#source-map';
   module.exports.mode = 'production';
+
+  // Add babel-minify preset only in production
+  const babelRules = module.exports.module.rules.find(rule => rule.loader === 'babel-loader');
+  babelRules.options.presets.unshift(['minify', { builtIns: false }]);
 }
 
 if (publicPath !== '/') {

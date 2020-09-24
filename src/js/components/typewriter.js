@@ -1,5 +1,5 @@
 import Typewriter from 'typewriter-effect/dist/core';
-import nanoid from 'nanoid/non-secure';
+import { nanoid } from 'nanoid/non-secure';
 import subscriptions from '../utils/subscription.js';
 
 const BASE_SELECTOR = '.typewriter';
