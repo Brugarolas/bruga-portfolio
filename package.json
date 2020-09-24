@@ -12,7 +12,6 @@
     "analyzer": "cross-env NODE_ENV=production ANALYZER=true webpack -p --progress --hide-modules"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
     "@babel/runtime-corejs3": "^7.11.2",
     "raf": "3.4.1",
     "nanoid": "^3.1.12",

@@ -3,9 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { ProvidePlugin } = require('webpack');
 
-const { NODE_ENV, PUBLIC_PATH } = process.env;
+const { NODE_ENV, PUBLIC_PATH, ANALYZER } = process.env;
 const isProduction = NODE_ENV === 'production';
+const isAnalyzer = isProduction && Boolean(ANALYZER);
 const publicPath = isProduction ? '/' + (PUBLIC_PATH ? PUBLIC_PATH + '/' : '') : '/';
+
+console.log('isAnalyzer', isAnalyzer);
 
 module.exports = {
   entry: './src/index.js',
@@ -46,7 +49,7 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           presets: [
-            [ '@babel/env', { targets: { browsers: [ 'last 2 versions' ] }, useBuiltIns: 'usage', corejs: 3, modules: false } ]
+            [ '@babel/env', { targets: { browsers: [ 'last 2 versions' ] }, useBuiltIns: false, corejs: 3, modules: false } ]
           ],
           plugins: [
             [ '@babel/transform-runtime', { corejs: 3 } ]
@@ -108,4 +111,9 @@ if (isProduction) {
   // Add babel-minify preset only in production
   const babelRules = module.exports.module.rules.find(rule => rule.loader === 'babel-loader');
   babelRules.options.presets.unshift(['minify', { builtIns: false }]);
+}
+
+if (isAnalyzer) {
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+  module.exports.plugins.push(new BundleAnalyzerPlugin());
 }
