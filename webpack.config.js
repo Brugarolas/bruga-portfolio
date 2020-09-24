@@ -102,14 +102,10 @@ module.exports = {
 };
 
 if (isProduction) {
-  module.exports.devtool = '#source-map';
+  module.exports.devtool = '';
   module.exports.mode = 'production';
 
   // Add babel-minify preset only in production
   const babelRules = module.exports.module.rules.find(rule => rule.loader === 'babel-loader');
   babelRules.options.presets.unshift(['minify', { builtIns: false }]);
-}
-
-if (publicPath !== '/') {
-  module.exports.devtool = '';
 }
