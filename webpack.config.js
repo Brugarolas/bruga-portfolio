@@ -8,8 +8,6 @@ const isProduction = NODE_ENV === 'production';
 const isAnalyzer = isProduction && Boolean(ANALYZER);
 const publicPath = isProduction ? '/' + (PUBLIC_PATH ? PUBLIC_PATH + '/' : '') : '/';
 
-console.log('isAnalyzer', isAnalyzer);
-
 module.exports = {
   entry: './src/index.js',
   mode: 'development',
@@ -49,7 +47,7 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           presets: [
-            [ '@babel/env', { targets: { browsers: [ 'last 2 versions' ] }, useBuiltIns: false, corejs: 3, modules: false } ]
+            [ '@babel/env', { targets: { browsers: [ 'last 2 versions' ] }, useBuiltIns: false, modules: false } ]
           ],
           plugins: [
             [ '@babel/transform-runtime', { corejs: 3 } ]
