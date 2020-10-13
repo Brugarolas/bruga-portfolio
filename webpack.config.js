@@ -3,19 +3,27 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { ProvidePlugin } = require('webpack');
 
-const { NODE_ENV, PUBLIC_PATH, ANALYZER } = process.env;
+const { NODE_ENV, PUBLIC_PATH, ANALYZER, LOCAL } = process.env;
 const isProduction = NODE_ENV === 'production';
+const isLocal = !isProduction && Boolean(LOCAL);
 const isAnalyzer = isProduction && Boolean(ANALYZER);
 const publicPath = isProduction ? '/' + (PUBLIC_PATH ? PUBLIC_PATH + '/' : '') : '/';
 
 module.exports = {
   entry: './src/index.js',
   mode: 'development',
-  stats: { children: false },
+  stats: {
+    assets: true,
+    children: false,
+    colors: true
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: publicPath,
-    filename: 'js/bundle.js?[hash]'
+    filename: 'js/bundle.js?[contenthash]'
+  },
+  optimization: {
+    minimize: true
   },
   module: {
     rules: [
@@ -62,7 +70,7 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]',
+          name: '[name].[ext]?[contenthash]',
           outputPath: 'img',
           esModule: false
         }
@@ -71,7 +79,7 @@ module.exports = {
         test: /\.(woff|woff2|ttf|eot)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]',
+          name: '[name].[ext]?[contenthash]',
           outputPath: 'fonts',
           esModule: false
         }
@@ -90,7 +98,7 @@ module.exports = {
       inject: true
     }),
     new MiniCssExtractPlugin({
-      filename: 'styles/bundle.css?[hash]'
+      filename: 'styles/bundle.css?[contenthash]'
     })
   ],
   resolve: {
@@ -99,11 +107,20 @@ module.exports = {
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
-  devtool: '#eval-source-map'
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 8080,
+    hot: true,
+    open: true,
+    host: isLocal ? '0.0.0.0' : 'localhost',
+    useLocalIp: isLocal
+  },
+  devtool: 'eval-source-map'
 };
 
 if (isProduction) {
-  module.exports.devtool = '';
+  module.exports.devtool = false;
   module.exports.mode = 'production';
 
   // Add babel-minify preset only in production
