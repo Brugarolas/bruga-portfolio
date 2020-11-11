@@ -4,6 +4,7 @@ import typewriter from './components/typewriter.js';
 import pageTransitions from './components/page-transitions.js';
 import floatingNavbar from './components/floating-navbar.js';
 import projectCards from './components/project-cards.js';
+import timeElapsed from './components/time-elapsed.js';
 
 const initComponents = () => {
   requestAnimationFrame(() => {
@@ -15,6 +16,7 @@ const initComponents = () => {
     pageTransitions();
     floatingNavbar();
     projectCards();
+    timeElapsed();
   }, 50);
 };
 

@@ -1,18 +1,20 @@
 {
   "name": "bruga-portfolio",
   "description": "A personal portfolio made with Pug and Sass",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "andres-brugarolas",
   "license": "MIT",
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve",
     "start:local": "cross-env NODE_ENV=development LOCAL=true webpack serve",
+    "start:static": "npm run build && http-server ./dist",
     "build": "cross-env NODE_ENV=production webpack --progress --performance",
     "analyzer": "cross-env NODE_ENV=production ANALYZER=true webpack --progress --performance"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.12.5",
+    "dayjs": "^1.9.6",
     "raf": "3.4.1",
     "nanoid": "^3.1.16",
     "typewriter-effect": "^2.13.1",
@@ -47,6 +49,7 @@
     "webpack-bundle-analyzer": "^4.1.0",
     "sass": "^1.29.0",
     "fibers": "^5.0.0",
-    "pug": "^3.0.0"
+    "pug": "^3.0.0",
+    "http-server": "^0.12.3"
   }
 }
