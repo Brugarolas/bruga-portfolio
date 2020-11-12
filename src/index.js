@@ -1,5 +1,6 @@
 import './styles/app.scss';
 import './js/utils/polyfills.js';
+import './bruga-font.js';
 import initComponents from './js/init-components.js';
 import Typewriter from 'typewriter-effect/dist/core';
 
