@@ -6,6 +6,7 @@ module.exports = {
   classPrefix: 'bruga-icon-',
   baseSelector: '.bruga-icon',
   types: ['woff2', 'woff', 'ttf', 'svg'],
+  embed: process.env.NODE_ENV === 'development',
   dest: '/fonts',
   cssDest: '/styles',
   cssTemplate: './bruga-font.css.hbs',

@@ -86,7 +86,6 @@ module.exports = {
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
-        exclude: /fa-.*\.svg$/,
         options: {
           name: '[name].[ext]?[contenthash]',
           outputPath: 'img',
@@ -95,15 +94,6 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|ttf|eot)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]?[contenthash]',
-          outputPath: 'fonts',
-          esModule: false
-        }
-      },
-      {
-        test: /fa-.*\.svg$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[contenthash]',

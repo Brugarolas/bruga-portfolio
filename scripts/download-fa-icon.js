@@ -1,25 +1,10 @@
 const puppeteer = require('puppeteer-core')
 const { extendDefaultPlugins, optimize } = require('svgo')
+const { getIconFileDataFromURL } = require('./download-icon-utils.js')
 const fs = require('fs')
-const path = require('path')
 const chalk = require('chalk')
 const log = console.log // eslint-disable-line no-console
 const logError = console.error // eslint-disable-line no-console
-
-const FONT_SVGS_PATH = '../src/svgs/'
-
-// Check args are valid
-const args = process.argv.slice(2)
-const faUrl = args[0] // First parameter is the URL of Font Awesome icon
-
-if (!faUrl) throw new Error('Font Awesome icon URL is missing')
-
-// Guess icon file name from URL
-const splitUrl = faUrl.split('/')
-const iconModel = splitUrl[splitUrl.length - 1]
-
-const [iconName, iconStyle] = iconModel.split('?style=')
-const fileName = `${iconName}-${iconStyle}`
 
 /**
  * Method that uses Puppeteer to download element from remote page
@@ -92,7 +77,7 @@ const optimizeSvg = (svgString) => {
  */
 const saveFile = (filePath, stringContent) => {
   return new Promise((resolve) => {
-    fs.writeFile(path.resolve(__dirname, filePath), stringContent, { encoding: 'utf8', flag: 'w' }, (error) => {
+    fs.writeFile(filePath, stringContent, { encoding: 'utf8', flag: 'w' }, (error) => {
       if (error) throw error
 
       resolve({ filePath, stringContent })
@@ -100,14 +85,45 @@ const saveFile = (filePath, stringContent) => {
   })
 }
 
-// All the magic happens here!
-// Download SVG from Font Awesome URL, optimizes it, and saves it in our project
-downloadElementFromPage(faUrl, `.svg-inline--fa.fa-2x.fa-${iconName}`).then(
-  svgString => optimizeSvg(svgString)
-).then(
-  svgString => saveFile(`${FONT_SVGS_PATH}${fileName}.svg`, svgString)
-).then(() => {
-  log(`${chalk.bold('Successfully added')} ${chalk.bold.green(fileName)} ${chalk.bold('icon to project!')}\n`)
-}).catch(error => {
-  logError(error)
-})
+/**
+ * All the magic happens here!
+ * Download SVG from Font Awesome URL, optimizes it, and saves it in our project
+ *
+ * @param {String} faURL Font Awesome icon URL
+ * @returns {Promise} Promise what will be resolved when file is written
+ */
+const addIconToProject = async (faURL) => {
+  // Guess icon file name from URL
+  const iconData = getIconFileDataFromURL(faURL)
+
+  return downloadElementFromPage(faURL, iconData.selector).then(
+    svgString => optimizeSvg(svgString)
+  ).then(
+    svgString => saveFile(iconData.path, svgString)
+  ).then(() => {
+    log(`${chalk.bold('Successfully added')} ${chalk.bold.green(iconData.name)} ${chalk.bold('icon to project!')}\n`)
+  }).catch(error => {
+    logError(error)
+  })
+}
+
+// Check args are valid
+const scriptName = process.argv[1] // Second process argument is script name
+const isRunningAddIconScript = scriptName.includes('scripts/download-fa-icon')
+
+// If we are running this script, add icon to project
+// Otherwise, export method
+if (isRunningAddIconScript) {
+  const args = process.argv.slice(2)
+  const faURL = args[0] // First parameter is the URL of Font Awesome icon
+
+  if (!faURL) {
+    throw new Error('Font Awesome icon URL is missing')
+  }
+
+  addIconToProject(faURL)
+}
+
+module.exports = {
+  addIconToProject
+}
