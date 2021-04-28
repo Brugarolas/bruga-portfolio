@@ -8,6 +8,6 @@ module.exports = {
   types: ['woff2', 'woff', 'ttf', 'svg'],
   dest: '/fonts',
   cssDest: '/styles',
-  cssTemplate: './svgs/bruga-font.css.hbs',
+  cssTemplate: './bruga-font.css.hbs',
   fileName: '[fontname].[ext]?[chunkhash]'
 };

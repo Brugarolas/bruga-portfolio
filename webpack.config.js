@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { ProvidePlugin } = require('webpack');
 
 const { NODE_ENV, PUBLIC_PATH, ANALYZER, LOCAL } = process.env;
 const isProduction = NODE_ENV === 'production';
