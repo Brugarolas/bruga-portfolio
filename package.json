@@ -54,6 +54,7 @@
     "fibers": "^5.0.0",
     "pug": "^3.0.0",
     "svgo": "^2.3.0",
+    "@supercharge/promise-pool": "^1.7.0",
     "puppeteer-core": "^9.0.0",
     "http-server": "^0.12.3",
     "chalk": "^4.1.1"
