@@ -8,7 +8,7 @@ const chalk = require('chalk')
 const log = console.log // eslint-disable-line no-console
 
 // Probably can get a lot higher before it starts to fail, but it's better to be conservative
-const MAX_CONCURRENCY = 12
+const MAX_CONCURRENCY = 8
 
 // Loop over an array of icon URLs and check if they exists in our project
 const iconsToDownload = includedIcons.filter(iconUrl => {
@@ -43,7 +43,7 @@ const downloadIcons = async (icons) => {
 }
 
 if (!iconsToDownload.length) {
-  log(chalk.bold('Now new icons to add!\n'))
+  log(chalk.bold('No new icons to add!\n'))
 } else {
   downloadIcons(iconsToDownload)
 }

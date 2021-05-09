@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer-core')
 const { extendDefaultPlugins, optimize } = require('svgo')
 const { getIconFileDataFromURL } = require('./download-icon-utils.js')
+const path = require('path')
 const fs = require('fs')
 const chalk = require('chalk')
 const log = console.log // eslint-disable-line no-console
@@ -93,7 +94,7 @@ const optimizeSvg = (svgString) => {
 }
 
 /**
- * Method that writes string content into a specified file path, overriding file it it already exists
+ * Method that writes string content into a specified file path, overriding file if it already exists
  *
  * @param {String} filePath Path of the file
  * @param {String} stringContent Content of the file
@@ -107,6 +108,33 @@ const saveFile = (filePath, stringContent) => {
       resolve({ filePath, stringContent })
     })
   })
+}
+
+/**
+ * Method that persists new added URL in JSON file if it does not exist before
+ *
+ * @param {String} url New URL to persist in file
+ * @param {String} filePath File path of JSON to update with new URL
+ */
+ const persistUrl = (url, filePath = './included-icons.json') => {
+  try {
+    const urls = require(filePath)
+
+    if (urls.includes(url)) {
+      return
+    }
+
+    urls.push(url)
+
+    const jsonPath = path.resolve(__dirname, filePath)
+    const jsonContent = JSON.stringify(urls.sort(), null, '\t')
+
+    fs.writeFileSync(jsonPath, jsonContent)
+
+    log(`${chalk.bold('Updated')} ${chalk.bold.green(filePath)} ${chalk.bold('file with new URL')} ${chalk.blue(url)}\n`)
+  } catch (error) {
+    logError(`Could not persist ${url} URL in ${filePath} file`, error)
+  }
 }
 
 /**
@@ -136,23 +164,6 @@ const addIconToProject = async (faURL, browser) => {
   }).catch(error => {
     logError(error)
   })
-}
-
-// Check args are valid
-const scriptName = process.argv[1] // Second process argument is script name
-const isRunningAddIconScript = scriptName.includes('scripts/download-fa-icon')
-
-// If we are running this script, add icon to project
-// Otherwise, export method
-if (isRunningAddIconScript) {
-  const args = process.argv.slice(2)
-  const faURL = args[0] // First parameter is the URL of Font Awesome icon
-
-  if (!faURL) {
-    throw new Error('Font Awesome icon URL is missing')
-  }
-
-  addIconToProject(faURL)
 }
 
 module.exports = {
