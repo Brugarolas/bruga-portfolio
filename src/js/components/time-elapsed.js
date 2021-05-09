@@ -1,6 +1,5 @@
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
-import requestAnimationFrame from '../utils/raf.js';
 
 const BASE_SELECTOR = '.time-elapsed';
 const DEFAULT_UNITS = 'years';

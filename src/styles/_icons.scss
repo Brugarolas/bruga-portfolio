@@ -1,9 +1,3 @@
-$fa-font-path: '../../node_modules/@fortawesome/fontawesome-free/webfonts';
-
-@import '@fortawesome/fontawesome-free/scss/fontawesome';
-@import '@fortawesome/fontawesome-free/scss/solid';
-@import '@fortawesome/fontawesome-free/scss/brands';
-
 @mixin skill-icon-correction {
   font-size: 22px !important;
   top: 5px !important;

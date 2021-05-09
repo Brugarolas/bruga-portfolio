@@ -158,7 +158,11 @@ const addIconToProject = async (faURL, browser) => {
   return downloadElementPromise.then(
     svgString => optimizeSvg(svgString)
   ).then(
-    svgString => saveFile(iconData.path, svgString)
+    svgString => {
+      persistUrl(faURL)
+
+      return saveFile(iconData.path, svgString)
+    }
   ).then(() => {
     log(`${chalk.bold('Successfully added')} ${chalk.bold.green(iconData.name)} ${chalk.bold('icon to project!')}\n`)
   }).catch(error => {

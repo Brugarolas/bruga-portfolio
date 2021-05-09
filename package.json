@@ -9,8 +9,8 @@
     "start": "cross-env NODE_ENV=development webpack serve --hot",
     "start:local": "cross-env NODE_ENV=development LOCAL=true webpack serve --hot",
     "start:static": "npm run build && http-server ./dist",
-    "build": "cross-env NODE_ENV=production webpack --progress --performance",
-    "build:analyzer": "cross-env NODE_ENV=production ANALYZER=true webpack --progress --performance",
+    "build": "cross-env NODE_ENV=production webpack --progress",
+    "build:analyzer": "cross-env NODE_ENV=production ANALYZER=true webpack --progress",
     "icons:add": "node scripts/download-icon",
     "icons:update-included": "node scripts/download-included-icons",
     "utils:outdated": "npm outdated",
@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.14.0",
-    "@fortawesome/fontawesome-free": "^5.15.3",
     "dayjs": "^1.10.4",
     "nanoid": "^3.1.22",
     "raf": "3.4.1",

@@ -130,6 +130,7 @@ const initPageTransitionButtons = (selector = '[data-transition-to]') => {
   /* Key bindings */
   const goAdjacentPage = (backwards = false, checkScroll = true) => {
     const actualPage = getActualPage();
+
     if (checkScroll && !scrollHasEnded(actualPage, backwards)) {
       return;
     }

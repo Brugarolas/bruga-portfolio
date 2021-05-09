@@ -5,3 +5,4 @@
 - Add non-existant custom SVG icons (Maven, Spring, Oracle SQL, MongoDB, Hibernate)
 - Examine which Font Awesome icons are we using and add them to icon font
 - Modify webfonts-loader settings to make all icons have same height and width, and be centered (both vertically and horizontally) -> https://github.com/vusion/webfonts-generator#fontname-normalize-fontheight-round-descent
+- Up/Down arrow keys don't scroll on Chrome when going to another page and without manually clicking

@@ -41,7 +41,7 @@ const initTypewriter = (selector = `${PAGE_SELECTOR} ${BASE_SELECTOR}`) => {
   };
 
   const createTypewriter = (element) => {
-    const { strings, loop, waitFor, autoStart } = getElementData(element);
+    const { strings, loop, waitFor } = getElementData(element);
     const typewriter = new Typewriter(element, { loop, ...BASE_CONF });
 
     addStrings(typewriter, strings, loop);

@@ -11,7 +11,7 @@ mixin section-aboutme(name, personalPhoto, page)
           div.aboutme__content__wrapper
             p.aboutme__content__name= name
             p.aboutme__content__location
-              i.aboutme__content__icon.fas.fa-map-marker-alt
+              i.aboutme__content__icon.bruga-icon.bruga-icon-map-marker-alt-solid
               | Madrid, Spain
 
         div.aboutme__content__text
@@ -57,4 +57,4 @@ mixin section-aboutme(name, personalPhoto, page)
             span.aboutme__content__skill #[i.aboutme__content__icon.icon-jenkins.bruga-icon.bruga-icon-jenkins-brands] Jenkins
 
     div.aboutme__bottom
-      +link-local-icon(page + 1, 'link-icon--local fas fa-chevron-down')
+      +link-local-icon(page + 1, 'link-icon--local bruga-icon bruga-icon-chevron-down-solid')

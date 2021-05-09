@@ -25,13 +25,13 @@ mixin section-projects(page)
     +header-navbar()
 
     header.projects__header Personal Projects
-    
+
     div.work_in_progress
-      p.work_in_progress__text #[i.fas.fa-exclamation-triangle.work_in_progress__icon] Work in Progress!
-    
+      p.work_in_progress__text #[i.bruga-icon.bruga-icon-exclamation-triangle-solid.work_in_progress__icon] Work in Progress!
+
     div.projects__content
       +project-card(brugaMusicData)
       +project-card(brugaWeatherData)
-    
+
     div.projects__bottom
-      +link-local-icon(page + 1, 'link-icon--local fas fa-chevron-down')
+      +link-local-icon(page + 1, 'link-icon--local bruga-icon bruga-icon-chevron-down-solid')
