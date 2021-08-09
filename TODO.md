@@ -1,5 +1,7 @@
 # TODO
 - Update experience
+- Run Lighthouse and apply best recomendations:
+  - Like nested dependencies: main css -> font css -> bunch of fonts, which might be flatten if we install fonts on our project
 - Add TypeScript, Svelte and Nuxt as front-end skills, and Rust as back-end skills
 - Think about adding more skills (Cypress? Travis? Github Actions?) or patterns/soft skills (TDD? BDD? etc)
 - Add non-existant custom SVG icons (Maven, Spring, Oracle SQL, MongoDB, Hibernate)

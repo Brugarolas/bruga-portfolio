@@ -22,7 +22,12 @@ module.exports = {
     filename: 'js/bundle.js?[contenthash]'
   },
   optimization: {
-    minimize: true
+    minimize: true,
+    removeEmptyChunks: true,
+    mergeDuplicateChunks: true,
+    flagIncludedChunks: true, // https://webpack.js.org/configuration/optimization/#optimizationflagincludedchunks
+    providedExports: true,
+    usedExports: 'global'
   },
   module: {
     rules: [
@@ -112,7 +117,12 @@ module.exports = {
       meta: {
         viewport: 'width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no'
       },
-      inject: true
+      inject: true,
+      publicPath: 'auto',
+      scriptLoading: 'defer',
+      hash: true,
+      minify: true,
+      cache: true
     }),
     new MiniCssExtractPlugin({
       filename: 'styles/bundle.css?[contenthash]'
