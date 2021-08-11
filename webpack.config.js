@@ -132,9 +132,10 @@ module.exports = {
         { family: 'Roboto Slab', variants: [ '300', '400', '700' ], display: 'swap' }
       ],
       formats: [ 'woff2', 'woff', 'ttf' ],
-      path: 'fonts/'
+      path: '../fonts',
+      filename: './styles/fonts.css'
     }),
-    new InsertFontCSS('./fonts.css'),
+    new InsertFontCSS('./styles/fonts.css'),
     new HtmlWebpackPlugin({
       title: 'Andrés Brugarolas',
       template: "./src/index.pug",
