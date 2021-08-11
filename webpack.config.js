@@ -1,12 +1,29 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const GoogleFontsPlugin = require('@beyonk/google-fonts-webpack-plugin');
 
 const { NODE_ENV, PUBLIC_PATH, ANALYZER, LOCAL } = process.env;
 const isProduction = NODE_ENV === 'production';
 const isLocal = !isProduction && Boolean(LOCAL);
 const isAnalyzer = isProduction && Boolean(ANALYZER);
 const publicPath = isProduction ? '/' + (PUBLIC_PATH ? PUBLIC_PATH + '/' : '') : '/';
+
+class InsertFontCSS {
+	constructor(url) {
+    this.url = url;
+  }
+
+	apply(compiler) {
+		compiler.hooks.compilation.tap('InsertFontCSS', (compilation) => {
+    		HtmlWebpackPlugin.getHooks(compilation).beforeAssetTagGeneration.tapAsync('InsertFontCSS', (data, cb) => {
+          data.assets.css.push(this.url);
+          cb(null, data);
+        }
+			)
+		})
+	}
+}
 
 module.exports = {
   entry: './src/index.js',
@@ -104,6 +121,15 @@ module.exports = {
     ]
   },
   plugins: [
+    new GoogleFontsPlugin({
+      fonts: [
+        { family: 'Open Sans', variants: [ '300', '400', '600' ], display: 'swap' },
+        { family: 'Roboto Slab', variants: [ '300', '400', '700' ], display: 'swap' }
+      ],
+      formats: [ 'woff2', 'woff', 'ttf' ],
+      path: 'fonts/'
+    }),
+    new InsertFontCSS('./fonts.css'),
     new HtmlWebpackPlugin({
       title: 'Andrés Brugarolas',
       template: "./src/index.pug",
