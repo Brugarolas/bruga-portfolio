@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $button-position: 20px;
 $button-size: 46px;
 $line-width: 26px;
@@ -37,7 +39,7 @@ $line-color: #07080a;
 
     .floating-navbar__button__icon {
       position: relative;
-      margin-top: ($button-size - $line-height) / 2;
+      margin-top: math.div(($button-size - $line-height), 2);
       @include navbar-icon__line();
 
       &::before {

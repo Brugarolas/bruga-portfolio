@@ -9,7 +9,7 @@
 }
 
 .heart {
-  color: #e63434; //#d90000;
+  color: #e63434;
   font-size: 26px;
 }
 .icon-javascript {
@@ -27,11 +27,23 @@
 .icon-vue {
   color: #3fb984;
 }
+.icon-svelte {
+  color: #ff3c00;
+}
+.icon-nuxt {
+  color: #00C58E;
+}
 .icon-sass {
   color: #ce679a;
 }
 .icon-less {
   color: #4484e8;
+}
+.icon-typescript {
+  color: #3178c6;
+}
+.icon-storybook {
+  color: #FF4785;
 }
 .icon-ember {
   color: #d74830;
@@ -47,6 +59,15 @@
 }
 .icon-node {
   color: #669f64;
+}
+.icon-rust {
+  color: #5a7094;
+}
+.icon-stripe {
+  color: #635BFF;
+}
+.icon-mailchimp {
+  color: #6e6464;
 }
 .icon-database {
   color: #ffb900;
@@ -65,7 +86,7 @@
   color: #bcae79;
 }
 .icon-webpack {
-  color: #1c78c0; // #2ca4e3;
+  color: #1c78c0;
   @include skill-icon-correction();
 }
 .icon-git {

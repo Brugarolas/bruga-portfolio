@@ -1,3 +1,4 @@
+- var bipiLogo = require('@/images/bipi-logo.svg')
 - var sngularLogo = require('@/images/sngular-logo.svg')
 - var amarisLogo = require('@/images/amaris-logo.png')
 - var clubLibroLogo = require('@/images/cil2-logo.jpg')
@@ -16,6 +17,23 @@ mixin section-experience(page)
     div.experience__content
       ul.work-history
         li.work-history__company
+          div.work-history__company__logo__empty
+          ul.work-history__company__jobs
+            li.work-history__company__jobs__position.position--final-company
+              div.work-history__company__jobs__position__main
+                +image-background(bipiLogo, { label: 'Bipi Mobility', classes: 'work-history__company__jobs__position__client' })
+                div.work-history__company__jobs__position__title
+                  p.title--main Senior front-end developer
+                  p.title--date 07/2020 - Today
+              div.work-history__company__jobs__position__desc Working at Bipi Mobility:
+                ul.feature-list
+                  li.feature Develop and maintain multiple back-office web applications and main Bipi public web application, an innovative company which offers flexible all-inclusive car subscriptions with a seamless digital experience.
+                  li.feature Use Vue.js as framework in back-office web apps, Nuxt.js in our public web application, SASS as CSS pre-processor, Pug for HTML templating, Webpack for module bundling and Babel for code transpiling.
+                  li.feature Follow a Design System, Figma for sharing design specifications and Storybook for component documentation. Work closely with UX designers to offer the best user experience possible.
+                  li.feature Develop and maintain some API endpoints, made with Node.js, Express and MongoDB.
+                  li.feature Integration and unit testing with Cypress, Chai, Mocha and Sinon.
+                  li.feature Multiple third-party integrations, like Stripe for payments, Mailchimp and Mandrill for email automation, Aircall for our call center or Intercom as a messaging platform for our customers and visitors.
+        li.work-history__company
           +image-background(sngularLogo, { label: 'S|ngular', classes: 'work-history__company__logo' })
           ul.work-history__company__jobs
             li.work-history__company__jobs__position
@@ -23,11 +41,11 @@ mixin section-experience(page)
                 +image-background(bbvaLogo, { label: 'BBVA', classes: 'work-history__company__jobs__position__client' })
                 div.work-history__company__jobs__position__title
                   p.title--main Senior front-end developer
-                  p.title--date 12/2018 - Today
+                  p.title--date 12/2018 - 07/2020
               div.work-history__company__jobs__position__desc Working at BBVA Mobile Channel:
                 ul.feature-list
                   li.feature Develop the three times award-winning best European banking and finances mobile app.
-                  li.feature Utilize a Design System and Gallery.io for sharing design specifications. Work closely with UX designers to offer the best user experience possible, including accessibility features. 
+                  li.feature Utilize a Design System and Gallery.io for sharing design specifications. Work closely with UX designers to offer the best user experience possible, including accessibility features.
                   li.feature Use Ember as framework, LitElement/LitHTML for web components and Sass for CSS pre-processing.
                   li.feature Integration and unit testing with Cucumber, Web Driver and QUnit.
                   li.feature Develop and maintain some Amazon Lambda microservices with Node.js, and tested them with Mocha.
