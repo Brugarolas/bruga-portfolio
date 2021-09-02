@@ -1,4 +1,5 @@
 # TODO
+(Some of them are done, I need to update the list)
 - Update experience
 - Add Sentry to experience
 - Run Lighthouse and apply best recomendations:
