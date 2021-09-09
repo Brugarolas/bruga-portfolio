@@ -1,5 +1,7 @@
 # TODO
+(Some of them are done, I need to update the list)
 - Update experience
+- Add Sentry to experience
 - Run Lighthouse and apply best recomendations:
   - Like nested dependencies: main css -> font css -> bunch of fonts, which might be flatten if we install fonts on our project
 - Add TypeScript, Svelte and Nuxt as front-end skills, and Rust as back-end skills
