@@ -163,13 +163,14 @@ module.exports = {
     extensions: ['*', '.js', '.vue', '.json']
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 8080,
     hot: true,
     open: true,
-    host: isLocal ? '0.0.0.0' : 'localhost',
-    useLocalIp: isLocal
+    host: isLocal ? 'local-ip' : 'localhost',
+    static: {
+      directory: path.resolve(__dirname, 'dist')
+    }
   },
   devtool: 'eval-source-map'
 };
