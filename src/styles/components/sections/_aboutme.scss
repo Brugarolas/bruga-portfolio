@@ -137,6 +137,21 @@
             font-size: 24px;
           }
 
+          .icon-nuxt {
+            font-size: 32px;
+            top: -3px;
+          }
+
+          .icon-sass, .icon-less, .icon-ember {
+            font-size: 32px;
+            top: -2px;
+          }
+
+          .icon-spring, .icon-stripe, .icon-npm {
+            font-size: 28px;
+            top: 0;
+          }
+
           @include respond-above(mobile) {
             width: 158px;
             padding: 10px 8px 10px 36px;
@@ -147,6 +162,21 @@
               left: 15px;
               top: 7px;
               font-size: 28px;
+            }
+
+            .icon-nuxt {
+              font-size: 38px;
+              top: -3px;
+            }
+
+            .icon-sass, .icon-less, .icon-ember {
+              font-size: 38px;
+              top: -2px;
+            }
+
+            .icon-spring, .icon-stripe, .icon-npm {
+              font-size: 34px;
+              top: 0;
             }
           }
         }

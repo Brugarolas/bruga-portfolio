@@ -127,6 +127,7 @@ module.exports = {
   },
   plugins: [
     new GoogleFontsPlugin({
+      apiUrl: 'https://gwfh.mranftl.com/api/fonts',
       fonts: [
         { family: 'Open Sans', variants: [ '300', '400', '600' ], display: 'swap' },
         { family: 'Roboto Slab', variants: [ '300', '400', '700' ], display: 'swap' }
