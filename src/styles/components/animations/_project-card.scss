@@ -3,10 +3,12 @@
   width: 80vw;
   max-width: 760px;
   max-height: 380px;
+  min-height: 300px;
 
   @include respond-above(desktop) {
     height: 20vw;
     width: 40vw;
+    min-height: 200px;
   }
 }
 

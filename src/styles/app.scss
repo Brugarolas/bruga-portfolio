@@ -12,7 +12,68 @@
   overscroll-behavior: contain;
   height: 100%;
   min-height: 100%;
+  height: -webkit-fill-available;
+  min-height: -webkit-fill-available;
   margin: 0;
+  overflow: hidden; // (iOS fix) Use .scrollling-* classes for pages with scroll
   @include open-sans('regular', 16px);
   color: #fff;
+}
+
+body {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: hidden; // (iOS fix) Use .scrollling-* classes for pages with scroll
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+
+  /* https://css-tricks.com/the-notch-and-css/ */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  --viewport-height: 0px;
+}
+
+// Fix iOS landscape fullscreen mode
+@media only screen and (orientation: landscape) {
+  .ios {
+    &.full-height-viewport-mobile,
+    .full-height-viewport-mobile {
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
+    }
+    &.max-height-viewport-mobile,
+    .max-height-viewport-mobile {
+      max-height: 100vh;
+    }
+  }
+}
+
+.scrolling-parent {
+  flex: 1 1 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  flex-flow: column;
+}
+.scrolling-element {
+  flex: 1 1 0 !important;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  scroll-behavior: smooth;
+}
+
+.full-height-viewport-mobile {
+  /* https://dev.to/peiche/100vh-behavior-on-chrome-2hm8 */
+  min-height: calc(100vh - var(--viewport-height, 56px));
+  min-height: -webkit-fill-available;
+}
+.max-height-viewport-mobile {
+  /* https://dev.to/peiche/100vh-behavior-on-chrome-2hm8 */
+  max-height: calc(100vh - var(--viewport-height, 56px));
 }
