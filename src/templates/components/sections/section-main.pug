@@ -1,5 +1,5 @@
 mixin section-main(backgroundPicture, name, links, page)
-  main.main.page.page--current(data-page=page)
+  main.main.page.page--current(id=`#${page}`, data-page=page)
     div.main__background
       +image-background(backgroundPicture, { classes: 'main__background-image' })
 

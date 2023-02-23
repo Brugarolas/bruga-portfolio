@@ -9,7 +9,7 @@
 - var smsLogo = require('@/images/sms-logo.png')
 
 mixin section-experience(page)
-  section.experience.scrolling-element.page.page--hidden(data-page=page)
+  section.experience.scrolling-element.page.page--hidden(id=`#${page}`, data-page=page)
     +header-navbar()
 
     header.experience__header Work History

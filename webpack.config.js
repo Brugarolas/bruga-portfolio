@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const GoogleFontsPlugin = require('@beyonk/google-fonts-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
 
 const { NODE_ENV, PUBLIC_PATH, ANALYZER, LOCAL } = process.env;
 const isProduction = NODE_ENV === 'production';
@@ -106,7 +107,7 @@ module.exports = {
         loader: 'pug-loader'
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif|svg|webp)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[contenthash]',
@@ -154,6 +155,10 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'styles/bundle.css?[contenthash]'
+    }),
+    new CompressionPlugin({
+      algorithm: 'gzip',
+      test: /\.(js|css|svg|woff|woff2|ttf|eot)$/
     })
   ],
   resolve: {

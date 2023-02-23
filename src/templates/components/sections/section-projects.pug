@@ -21,7 +21,7 @@
 - };
 
 mixin section-projects(page)
-  section.projects.scrolling-element.page.page--hidden(data-page=page)
+  section.projects.scrolling-element.page.page--hidden(id=`#${page}`, data-page=page)
     +header-navbar()
 
     header.projects__header Personal Projects

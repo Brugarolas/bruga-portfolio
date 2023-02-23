@@ -3,4 +3,4 @@ mixin link-local(text, transitionTo, selected = 1, extraClasses)
   - var extra = extraClasses ? ` ${extraClasses}` : ''
   - var classes = `${selected}${extra}`
 
-  a.link-local(data-transition-to=transitionTo class=classes)= text
+  a.link-local(href=`#${transitionTo}`, data-transition-to=transitionTo, class=classes)= text
