@@ -95,7 +95,7 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           presets: [
-            [ '@babel/env', { targets: { browsers: [ 'last 2 versions' ] }, useBuiltIns: false, modules: false } ]
+            [ '@babel/env', { targets: { browsers: [ '>0.25%', 'not dead', 'not IE 11', 'not android < 5' ] }, useBuiltIns: false, modules: false } ]
           ],
           plugins: [
             [ '@babel/transform-runtime', { corejs: 3 } ]
@@ -158,7 +158,7 @@ module.exports = {
     }),
     new CompressionPlugin({
       algorithm: 'gzip',
-      test: /\.(js|css|svg|woff|woff2|ttf|eot)$/
+      test: /\.(html|js|css|svg|woff|woff2|ttf|eot)$/
     })
   ],
   resolve: {

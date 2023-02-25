@@ -1,2 +1,2 @@
-mixin link-local-icon(transitionTo, extraClasses)
-  i.link-icon.link-icon--local.bruga-icon.bruga-icon-chevron-down-solid(href=`#${transitionTo}`, data-transition-to=transitionTo, class=extraClasses)
+mixin link-local-icon(transitionTo, extraClasses, ariaLabel)
+  a.link-icon.link-icon--local.bruga-icon.bruga-icon-chevron-down-solid(aria-label=ariaLabel, href=`#${transitionTo}`, data-transition-to=transitionTo, class=extraClasses)

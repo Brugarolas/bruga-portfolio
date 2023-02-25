@@ -5,8 +5,8 @@ mixin section-main(backgroundPicture, name, links, page)
 
     header.main__top
       div.main__top__icons
-        +link-icon(links.linkedin, 'bruga-icon bruga-icon-linkedin-brands')
-        +link-icon(links.github, 'bruga-icon bruga-icon-github-brands')
+        +link-icon(links.linkedin, 'bruga-icon bruga-icon-linkedin-brands', 'LinkedIn')
+        +link-icon(links.github, 'bruga-icon bruga-icon-github-brands', 'GitHub')
       div.main__top__name= name
 
     div.main__content-wrapper
@@ -15,4 +15,4 @@ mixin section-main(backgroundPicture, name, links, page)
         +typewriter({text: ['Passion for programming <i class="heart bruga-icon bruga-icon-heart-solid"></i>', 'Clean code enthusiast', 'Exceptional user experience', 'Responsive & pixel-perfect layouts', 'Advanced problem-solving skills'], loop: 'true', waitFor: 'title'}, 'subtitle')
 
     div.main__bottom
-      +link-local-icon(page + 1, 'link-icon--local bruga-icon bruga-icon-chevron-down-solid')
+      +link-local-icon(page + 1, 'link-icon--local bruga-icon bruga-icon-chevron-down-solid', 'Next page')

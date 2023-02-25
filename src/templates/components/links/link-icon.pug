@@ -1,2 +1,2 @@
-mixin link-icon(href, extraClasses)
-  a.link-icon(href=href target='_blank' class=extraClasses)
+mixin link-icon(href, extraClasses, ariaLabel)
+  a.link-icon(aria-label=ariaLabel, href=href, target='_blank', class=extraClasses)
