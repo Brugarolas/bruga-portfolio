@@ -95,7 +95,7 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           presets: [
-            [ '@babel/env', { targets: { browsers: [ '>0.25%', 'not dead', 'not IE 11', 'not android < 5' ] }, useBuiltIns: false, modules: false } ]
+            [ '@babel/env', { targets: { browsers: [ '>0.25%', 'not dead', 'not IE > 5', 'not android < 5' ] }, useBuiltIns: false, modules: false } ]
           ],
           plugins: [
             [ '@babel/transform-runtime', { corejs: 3 } ]
@@ -142,7 +142,7 @@ module.exports = {
       title: 'Andrés Brugarolas',
       template: "./src/index.pug",
       filename: "./index.html",
-      favicon: './src/images/favicon_simple.png',
+      favicon: './src/images/favicon_simple.png', // TODO Delete when Favicon plugin is supported again
       meta: {
         viewport: 'width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no'
       },
@@ -153,6 +153,7 @@ module.exports = {
       minify: true,
       cache: true
     }),
+    // TODO new FaviconsWebpackPlugin('./src/images/favicon_simple.png') // Webpack 5 still not supported
     new MiniCssExtractPlugin({
       filename: 'styles/bundle.css?[contenthash]'
     }),
