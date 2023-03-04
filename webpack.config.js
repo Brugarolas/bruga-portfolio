@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const GoogleFontsPlugin = require('@beyonk/google-fonts-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
@@ -142,7 +143,6 @@ module.exports = {
       title: 'Andrés Brugarolas',
       template: "./src/index.pug",
       filename: "./index.html",
-      favicon: './src/images/favicon_simple.png', // TODO Delete when Favicon plugin is supported again
       meta: {
         viewport: 'width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no'
       },
@@ -153,7 +153,7 @@ module.exports = {
       minify: true,
       cache: true
     }),
-    // TODO new FaviconsWebpackPlugin('./src/images/favicon_simple.png') // Webpack 5 still not supported
+    new FaviconsWebpackPlugin('./src/images/favicon_simple.png'),
     new MiniCssExtractPlugin({
       filename: 'styles/bundle.css?[contenthash]'
     }),
@@ -166,7 +166,7 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, './src')
     },
-    extensions: ['*', '.js', '.vue', '.json']
+    extensions: ['*', '.js', '.json']
   },
   devServer: {
     compress: true,

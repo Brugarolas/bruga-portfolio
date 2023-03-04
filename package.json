@@ -1,7 +1,7 @@
 {
   "name": "bruga-portfolio",
   "description": "A personal portfolio made with Pug and Sass",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "author": "andres-brugarolas",
   "license": "MIT",
   "private": true,
@@ -28,10 +28,10 @@
     "node": ">=12.22.0"
   },
   "browserslist": [
-    "> 0.5%",
-    "last 2 versions",
-    "not ie <= 10",
-    "not dead"
+    ">0.25%",
+    "not dead",
+    "not IE > 5",
+    "not android < 5"
   ],
   "devDependencies": {
     "@babel/cli": "^7.20.7",
@@ -46,6 +46,8 @@
     "compression-webpack-plugin": "^10.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.3",
+    "favicons": "^7.1.0",
+    "favicons-webpack-plugin": "^6.0.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "http-server": "^14.1.1",
