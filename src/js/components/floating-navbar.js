@@ -2,30 +2,38 @@ import addEventListener from '../utils/event-listener.js';
 import requestAnimationFrame from '../utils/raf.js';
 import subscriptions from '../utils/subscription.js';
 import onResize from '../utils/on-resize.js';
+import { autobind, memoize } from 'useful-decorators';
 
 const ACTIVE_MENU_CLASS = 'floating-navbar--open';
 const OPEN_CLOSE_MENU_DURATION = 800;
 
 /* Aux functions */
-const getBoundingClientRectWithCache = (element) => {
-  if (!element.boundingClientRectCache) {
-    element.boundingClientRectCache = element.getBoundingClientRect();
+class ExpandedElement extends Element {
+  constructor (element) {
+    this.element = element;
   }
-  return element.boundingClientRectCache;
-};
 
-const calcElementScale = (element) => {
-  const elementInfo = getBoundingClientRectWithCache(element);
-  const height = window.innerHeight;
-  const width = window.innerWidth;
+  @autobind()
+  @memoize()
+  getBoundingClientRectWithCache () {
+    console.log('una vez');
+    return this.getBoundingClientRect();
+  };
 
-  const necessaryWidth = width - (elementInfo.top + elementInfo.width / 2);
-  const necessaryHeight = height - (elementInfo.top + elementInfo.width / 2);
+  @autobind()
+  calcElementScale () {
+    const elementInfo = this.getBoundingClientRectWithCache(element);
+    const height = window.innerHeight;
+    const width = window.innerWidth;
 
-  const hypotenuse = Math.sqrt(necessaryWidth * necessaryWidth + necessaryHeight * necessaryHeight);
+    const necessaryWidth = width - (elementInfo.top + elementInfo.width / 2);
+    const necessaryHeight = height - (elementInfo.top + elementInfo.width / 2);
 
-  return Math.ceil(2 * hypotenuse / elementInfo.width);
-};
+    const hypotenuse = Math.sqrt(necessaryWidth * necessaryWidth + necessaryHeight * necessaryHeight);
+
+    return Math.ceil(2 * hypotenuse / elementInfo.width);
+  };
+}
 
 /* Init floating menu function */
 const initFloatingNavbar = (selector = '.floating-navbar') => {
@@ -36,7 +44,8 @@ const initFloatingNavbar = (selector = '.floating-navbar') => {
   // On click open and close
   addEventListener(navbarButton, 'click', () => {
     const menuIsOpen = navbar.classList.contains(ACTIVE_MENU_CLASS);
-    const elementScale = menuIsOpen ? 1 : calcElementScale(navbarBackground);
+    const element = new ExpandedElement();
+    const elementScale = menuIsOpen ? 1 : element.calcElementScale();
 
     requestAnimationFrame(() => {
       navbar.classList.toggle(ACTIVE_MENU_CLASS);

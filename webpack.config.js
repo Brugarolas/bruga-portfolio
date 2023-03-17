@@ -99,6 +99,7 @@ module.exports = {
             [ '@babel/env', { targets: { browsers: [ '>0.25%', 'not dead', 'not IE > 5', 'not android < 5' ] }, useBuiltIns: false, modules: false } ]
           ],
           plugins: [
+            [ "@babel/plugin-proposal-decorators", { version: "legacy" } ],
             [ '@babel/transform-runtime', { corejs: 3 } ]
           ]
         }
