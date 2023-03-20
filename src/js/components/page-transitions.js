@@ -1,7 +1,7 @@
 import addEventListener from '../utils/event-listener.js';
 import requestAnimationFrame from '../utils/raf.js';
-import subscriptions from '../utils/subscription.js';
 import swipeDetect, { DIRECTIONS } from '../utils/swipe.js';
+import subscriptions from '../utils/subscription.js';
 import copyStyle from '../utils/copy-css.js';
 
 const TRANSITION_DURATION = 705;

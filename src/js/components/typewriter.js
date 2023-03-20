@@ -1,7 +1,6 @@
 import Typewriter from 'typewriter-effect/dist/core';
 import { nanoid } from 'nanoid/non-secure';
 import subscriptions from '../utils/subscription.js';
-
 const BASE_SELECTOR = '.typewriter';
 const PAGE_SELECTOR = '.page.page--current'
 const LOOP_DELAY = 1000;

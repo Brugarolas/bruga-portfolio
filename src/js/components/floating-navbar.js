@@ -16,7 +16,6 @@ class ExpandedElement extends Element {
   @autobind()
   @memoize()
   getBoundingClientRectWithCache () {
-    console.log('una vez');
     return this.getBoundingClientRect();
   };
 

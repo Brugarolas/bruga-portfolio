@@ -1,5 +1,5 @@
 import addEventListener from '../utils/event-listener.js';
-import { Subscription } from './subscription.js';
+import Subscription from 'reactblast';
 
 export const DIRECTIONS = {
   UP: 'up',
