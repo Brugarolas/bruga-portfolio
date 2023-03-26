@@ -24,7 +24,7 @@
     "raf": "3.4.1",
     "typewriter-effect": "^2.19.0",
     "useful-decorators": "^0.4.4",
-    "reactblast": "^1.0.0"
+    "reactivefy": "^1.2.4"
   },
   "engines": {
     "node": ">=12.22.0"

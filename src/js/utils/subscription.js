@@ -1,4 +1,4 @@
-import Reactblast from 'reactblast';
+import Reactblast from 'reactivefy';
 
 const { Subscription  } = Reactblast;
 const subscriptions = new Subscription ();

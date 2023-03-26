@@ -1,5 +1,5 @@
 import addEventListener from '../utils/event-listener.js';
-import Subscription from 'reactblast';
+import Subscription from 'reactivefy';
 
 export const DIRECTIONS = {
   UP: 'up',
