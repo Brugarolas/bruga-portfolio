@@ -16,11 +16,7 @@
   position: relative;
   perspective: 150rem;
   @include card-size();
-  margin: 50px 0;
-
-  @include respond-above(desktop) {
-    margin: 0 50px;
-  }
+  margin: 50px;
 
   &__side {
     @include card-size();

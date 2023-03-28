@@ -1,5 +1,6 @@
 - var brugaMusicPicture = require('@/images/bruga-music.jpg');
 - var brugaWeatherPicture = require('@/images/bruga-weather-r.png');
+- var codeBackgroundPicure = require('@/images/code_background_small.png')
 
 - var brugaMusicData = {
 -   title: 'Bruga Music',
@@ -16,8 +17,70 @@
 -   descr: 'Streaming music app made with OpenWeather API',
 -   github: 'https://github.com/Brugarolas/bruga-weather',
 -   link: 'https://brugarolas.github.io/bruga-weather/',
--   features: ['React', 'Redux', 'Immer', 'Webpack', 'Less'],
--   lightBackground: true
+-   features: ['React', 'Redux', 'Immer', 'Webpack', 'Less']
+- };
+
+- var vuerstileData = {
+-   title: 'Vuersatile Components',
+-   picture: codeBackgroundPicure,
+-   descr: 'A Vue 3 component library I\'m working on. Work in progress!',
+-   github: 'https://github.com/Brugarolas/vuersatile-components',
+-   link: 'https://github.com/Brugarolas/vuersatile-components/#readme',
+-   features: ['Vue', 'Components', 'Vite', 'Pug', 'SCSS']
+- };
+
+- var vuesaxData = {
+-   title: 'Vuesax',
+-   picture: codeBackgroundPicure,
+-   descr: 'A Vue component libray I have been maintaining',
+-   github: 'https://github.com/Brugarolas/vuesax/tree/develop',
+-   link: 'https://github.com/Brugarolas/vuesax/tree/develop/#readme',
+-   features: ['Vue', 'Components', 'Webpack', 'Stylus']
+- };
+
+- var swingData = {
+-   title: 'Swing',
+-   picture: codeBackgroundPicure,
+-   descr: 'A swipeable cards interface. The swipe-left/swipe-right for yes/no input',
+-   github: 'https://github.com/Brugarolas/swing',
+-   link: 'https://github.com/Brugarolas/swing/#readme',
+-   features: ['Javascript Vanilla', 'CSS', 'Babel']
+- };
+
+- var portfolioData = {
+-   title: 'My own portfolio',
+-   picture: codeBackgroundPicure,
+-   descr: 'My personal portfolio made with Pug and Sass',
+-   github: 'https://github.com/Brugarolas/bruga-portfolio',
+-   link: 'https://www.andres-brugarolas.com/',
+-   features: ['Javascript Vanilla', 'Pug', 'Sass', 'Babel']
+- };
+
+- var usefulDecoratorsData = {
+-   title: 'Useful Decorators',
+-   picture: codeBackgroundPicure,
+-   descr: 'Some useful JavaScript stage-0 decorators',
+-   github: 'https://github.com/Brugarolas/useful-decorators',
+-   link: 'https://github.com/Brugarolas/useful-decorators/#readme',
+-   features: ['Javascript Vanilla', 'Babel']
+- };
+
+- var reactivefyData = {
+-   title: 'Reactivefy',
+-   picture: codeBackgroundPicure,
+-   descr: 'Small event-emitter, observable and reactive pattern library',
+-   github: 'https://github.com/Brugarolas/reactive',
+-   link: 'https://github.com/Brugarolas/reactive/#readme',
+-   features: ['Javascript Vanilla', 'Reactive', 'Observale', 'Observe']
+- };
+
+- var immersibleData = {
+-   title: 'Immersible',
+-   picture: codeBackgroundPicure,
+-   descr: 'My own version of Immersible, with extra features and more convenient API',
+-   github: 'https://github.com/Brugarolas/immersible',
+-   link: 'https://github.com/Brugarolas/immersible/#readme',
+-   features: ['Javascript Vanilla', 'immutable', 'copy-on-write']
 - };
 
 mixin section-projects(page)
@@ -32,6 +95,13 @@ mixin section-projects(page)
     div.projects__content
       +project-card(brugaMusicData)
       +project-card(brugaWeatherData)
+      +project-card(vuerstileData)
+      +project-card(vuesaxData)
+      +project-card(swingData)
+      +project-card(portfolioData)
+      +project-card(usefulDecoratorsData)
+      +project-card(reactivefyData)
+      +project-card(immersibleData)
 
     div.projects__bottom
       +link-local-icon(page + 1, 'link-icon--local bruga-icon bruga-icon-chevron-down-solid', 'Next page')
