@@ -139,7 +139,7 @@
 
           .icon-nuxt {
             font-size: 32px;
-            top: -3px;
+            top: -5px;
           }
 
           .icon-sass, .icon-less, .icon-ember {
@@ -150,6 +150,32 @@
           .icon-spring, .icon-stripe, .icon-npm {
             font-size: 28px;
             top: 0;
+          }
+
+          .aboutme__content__icon-svg {
+            display: block;
+            position: absolute;
+            height: 32px;
+            width: 32px;
+            top: 6px;
+            left: 8px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-origin: content-box;
+            background-color: transparent;
+          }
+
+          &.solr  .aboutme__content__icon-svg {
+            height: 28px;
+            width: 28px;
+            top: 5px;
+            left: 12px;
+          }
+
+          &.babel .aboutme__content__icon-svg {
+            width: 52px;
+            top: 8px;
           }
 
           @include respond-above(mobile) {
