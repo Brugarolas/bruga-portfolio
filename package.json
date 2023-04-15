@@ -22,9 +22,9 @@
     "dayjs": "^1.11.7",
     "nanoid": "^4.0.2",
     "raf": "3.4.1",
+    "reactivefy": "^1.2.4",
     "typewriter-effect": "^2.19.0",
-    "useful-decorators": "^0.4.5",
-    "reactivefy": "^1.2.4"
+    "useful-decorators": "^0.4.5"
   },
   "engines": {
     "node": ">=12.22.0"
@@ -66,6 +66,7 @@
     "webpack": "^5.78.0",
     "webpack-bundle-analyzer": "^4.8.0",
     "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.13.2"
+    "webpack-dev-server": "^4.13.2",
+    "webpackbar": "^5.0.2"
   }
 }

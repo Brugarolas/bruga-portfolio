@@ -4,6 +4,7 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const GoogleFontsPlugin = require('@beyonk/google-fonts-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
+const WebpackBar = require('webpackbar');
 
 const { NODE_ENV, PUBLIC_PATH, ANALYZER, LOCAL } = process.env;
 const isProduction = NODE_ENV === 'production';
@@ -161,7 +162,8 @@ module.exports = {
     new CompressionPlugin({
       algorithm: 'gzip',
       test: /\.(html|js|css|svg|woff|woff2|ttf|eot)$/
-    })
+    }),
+    new WebpackBar()
   ],
   resolve: {
     alias: {
