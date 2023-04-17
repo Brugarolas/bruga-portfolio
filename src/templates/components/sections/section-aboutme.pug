@@ -26,6 +26,12 @@ mixin section-aboutme(name, personalPhoto, page)
           p.paragraph I love technology, programming and UX/UI design. I'm always trying to stay up to date on languages, frameworks and libraries. I'm also a good team player who likes agile
             |  methodologies and is always thinking how to improve the product or service.
 
+        div.aboutme__content__github-title My Github stats
+        div.aboutme__content__github-stats
+          +image-background("https://github-readme-stats.vercel.app/api?username=Brugarolas&show_icons=true&theme=dark&include_all_commits=true&count_private=true&hide_title=true&ring_color=72f08e", { classes: 'aboutme__content__github-img' })
+        div.aboutme__content__github-stats
+          +image-background("https://github-readme-stats.vercel.app/api/top-langs/?username=Brugarolas&layout=compact&theme=dark", { classes: 'aboutme__content__github-img' })
+
       div.aboutme__content__section
         div.aboutme__content__section__title Main technical skills
         dl.aboutme__content__skills

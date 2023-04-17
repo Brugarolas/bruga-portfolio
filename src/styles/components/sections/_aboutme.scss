@@ -82,6 +82,29 @@
       font-size: 20px;
     }
 
+    .aboutme__content__github-title {
+      @include roboto-slab('regular', 20px);
+      text-align: center;
+      letter-spacing: 1px;
+      margin: 10px 20px;
+    }
+
+    .aboutme__content__github-stats {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 -20px 12px -20px;
+    }
+
+    .aboutme__content__github-img {
+      width: 100%;
+      max-width: 467px;
+      max-height: 195px;
+      min-height: 162px;
+      background-size: contain;
+      background-color: transparent;
+    }
+
     .aboutme__content__skills {
       display: flex;
       flex-flow: row;
