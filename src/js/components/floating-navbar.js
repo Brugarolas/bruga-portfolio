@@ -8,7 +8,7 @@ const ACTIVE_MENU_CLASS = 'floating-navbar--open';
 const OPEN_CLOSE_MENU_DURATION = 800;
 
 /* Aux functions */
-class ExpandedElement extends Element {
+class ExpandableElement {
   constructor (element) {
     this.element = element;
   }
@@ -16,12 +16,12 @@ class ExpandedElement extends Element {
   @autobind()
   @memoize()
   getBoundingClientRectWithCache () {
-    return this.getBoundingClientRect();
+    return this.element.getBoundingClientRect();
   };
 
   @autobind()
   calcElementScale () {
-    const elementInfo = this.getBoundingClientRectWithCache(element);
+    const elementInfo = this.getBoundingClientRectWithCache();
     const height = window.innerHeight;
     const width = window.innerWidth;
 
@@ -43,7 +43,7 @@ const initFloatingNavbar = (selector = '.floating-navbar') => {
   // On click open and close
   addEventListener(navbarButton, 'click', () => {
     const menuIsOpen = navbar.classList.contains(ACTIVE_MENU_CLASS);
-    const element = new ExpandedElement();
+    const element = new ExpandableElement(navbarBackground);
     const elementScale = menuIsOpen ? 1 : element.calcElementScale();
 
     requestAnimationFrame(() => {

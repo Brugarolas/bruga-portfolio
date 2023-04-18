@@ -1,7 +1,7 @@
 {
   "name": "bruga-portfolio",
   "description": "A personal portfolio made with Pug and Sass",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "author": "andres-brugarolas",
   "license": "MIT",
   "private": true,
